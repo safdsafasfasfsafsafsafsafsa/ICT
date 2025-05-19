@@ -46,3 +46,7 @@ const sum = v1 + v2;
 
 console.log(sum);
 console.log(typeof sum);
+
+// 1~20 랜덤 정수 머신
+const rdMach = Math.floor(Math.random() * 20 + 1);
+console.log(rdMach);
