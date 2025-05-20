@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        height: 100vh;
+        background-color: #fff;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 999px;
+        cursor: pointer;
+      }
+
+      .btn-a {
+        padding: 30px 20px; /* 세로 padding 증가 */
+        border-radius: 999px;
+        background-color: #1428d4;
+        color: white;
+        transition: opacity 0.2s, background-color 3s ease-in;
+      }
+
+      .btn-a:hover {
+        opacity: 0.7;
+        background-color: black;
+      }
+
+      .btn-a:active {
+        opacity: 0.3;
+      }
+
+      .btn-b {
+        padding: 10px 20px;
+        border-radius: 0; /* 사각형으로 설정 */
+        background-color: white;
+        color: #1674d0;
+        border: 2px solid crimson;
+      }
+
+      .btn-c {
+        background-color: #173642; /* 어두운 청록 */
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn btn-a">ButtonA</button>
+    <button class="btn btn-b">ButtonB</button>
+    <button class="btn btn-c">ButtonC</button>
+  </body>
+</html>
