@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        background-color: aqua;
+        padding: 10px;
+        margin-bottom: 30px;
+      }
+      .container:hover {
+        background-color: bisque;
+      }
+      .container-two > div {
+        margin-top: 30px;
+        width: 100px;
+        height: 100px;
+        float: left;
+        background-color: brown;
+      }
+      .container-two > div:nth-child(2n + 1) {
+        background-color: blueviolet;
+      }
+      .container-two > div:last-child {
+        width: 300px;
+      }
+
+      li {
+        float: left;
+        margin-right: 30px;
+        font-size: 32px;
+        list-style: none; /* remove the default bullet */
+      }
+      li::after {
+        content: " | ";
+        padding-left: 30px;
+      }
+      li:last-of-type::after {
+        /* 마지막 바 지우기 */
+        content: "";
+      }
+      li:first-of-type {
+        color: red;
+        content: "first";
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container container-box">mouse hover</div>
+    <input class="focus-input" type="text" />
+    <div class="container-two">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <ul>
+      <li>A</li>
+      <li>B</li>
+      <li>C</li>
+    </ul>
+  </body>
+</html>
