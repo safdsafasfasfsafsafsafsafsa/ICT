@@ -15,6 +15,13 @@
         background-color: #fff;
       }
 
+      .image {
+        width: 500px;
+        height: 500px;
+
+        object-fit: cover;
+      }
+
       .btn {
         padding: 10px 20px;
         font-size: 18px;
@@ -47,15 +54,34 @@
         background-color: white;
         color: #1674d0;
         border: 2px solid crimson;
+        transition: background-color 0.3s, color 0.3s; /* 부드러운 전환 효과 추가 */
+      }
+
+      .btn-b:hover {
+        background-color: crimson; /* 배경색 변경 */
+        color: white; /* 텍스트 색상 변경 */
       }
 
       .btn-c {
         background-color: #173642; /* 어두운 청록 */
         color: white;
+        transition: background-color 0.3s, color 0.3s; /* 부드러운 전환 효과 추가 */
+      }
+
+      .btn-c:hover {
+        background-color: #2a6f85; /* 더 밝은 청록 */
+        color: #e0f7fa; /* 밝은 청록색 텍스트 */
       }
     </style>
   </head>
   <body>
+    <img class="image" src="im1.png" alt="aaa" />
+    <input type="text" placeholder="입력" />
+    <input type="password" />
+    <input type="checkbox" />
+    <input type="radio" />
+    <input type="file" />
+
     <button class="btn btn-a">ButtonA</button>
     <button class="btn btn-b">ButtonB</button>
     <button class="btn btn-c">ButtonC</button>
