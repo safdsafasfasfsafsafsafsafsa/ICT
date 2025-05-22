@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .element {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        display: inline-block;
+        margin: 10px;
+      }
+
+      .element-a {
+        animation: skew 3s infinite alternate;
+        transform: skew(20deg);
+      }
+
+      @keyframes skew {
+        0% {
+          transform: skew(20deg);
+        }
+        100% {
+          transform: skew(-20deg);
+        }
+      }
+
+      .element-b {
+        animation: scaleUp 2s infinite alternate;
+      }
+
+      @keyframes scaleUp {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(1.5);
+        }
+      }
+
+      .element-c {
+        animation: move 3s infinite alternate;
+      }
+
+      @keyframes move {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(50px, 50px);
+        }
+      }
+
+      .element-d {
+        animation: rotate 4s infinite linear;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .element-e {
+        animation: matrixEffect 3s infinite alternate;
+      }
+
+      @keyframes matrixEffect {
+        0% {
+          transform: matrix(1, 0, 0, 1, 0, 0);
+        }
+        100% {
+          transform: matrix(1, 0.5, -0.5, 1, 30, 30);
+        }
+      }
+
+      .element-f {
+        animation: perspectiveEffect 5s infinite alternate;
+      }
+
+      @keyframes perspectiveEffect {
+        0% {
+          transform: perspective(500px) rotateY(0deg);
+        }
+        100% {
+          transform: perspective(500px) rotateY(45deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="element element-a"></div>
+    <div class="element element-b"></div>
+    <div class="element element-c"></div>
+    <div class="element element-d"></div>
+    <div class="element element-e"></div>
+    <div class="element element-f"></div>
+  </body>
+</html>

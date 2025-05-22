@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        position: relative;
+        animation: aniName 4s linear 1s infinite alternate;
+      }
+      @keyframes aniName {
+        0% {
+          background-color: blueviolet;
+          left: 0px;
+          top: 0px;
+        }
+        25% {
+          background-color: red;
+          left: 150px;
+          top: 0px;
+        }
+        50% {
+          background-color: green;
+          left: 150px;
+          top: 150px;
+        }
+        75% {
+          background-color: yellow;
+          left: 0px;
+          top: 150px;
+        }
+        100% {
+          background-color: firebrick;
+          left: 0px;
+          top: 0px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>
