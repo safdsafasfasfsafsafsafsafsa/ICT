@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box-container {
+        width: 200px;
+        height: 200px;
+        border: 3px solid black;
+      }
+      .box-container div {
+        padding: 10px;
+        border: 1px solid green;
+        background-color: lightblue;
+      }
+      #static-box {
+        position: static;
+        top: 20px;
+        left: 30px;
+      }
+      #relative-box {
+        position: relative;
+        top: 20px;
+        left: 30px;
+      }
+      #absolute-box {
+        position: absolute;
+        top: 20px;
+        right: 150px;
+      }
+      #fixed-box {
+        position: fixed;
+        top: 20px;
+        right: 30px;
+      }
+      #r2 {
+        position: relative;
+        height: 80px;
+        margin-top: 70px;
+        border: 3px solid turquoise;
+        width: 200px;
+      }
+      #a2 {
+        position: absolute;
+        top: 40px;
+        left: 30px;
+        border: 3px solid red;
+      }
+      #sticky {
+        position: sticky;
+        top: 10px;
+        background-color: lightgreen;
+        padding: 5px;
+        border: 2px solid green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box-container">
+      <div id="static-box">static</div>
+      <div id="relative-box">relative</div>
+      <div id="absolute-box">absolute</div>
+      <div id="fixed-box">fixed</div>
+      <div id="r2">
+        r2
+        <div id="a2">a2</div>
+      </div>
+    </div>
+    <div id="sticky">sticky</div>
+    <div style="padding-bottom: 2000px">
+      element-b: 크기가 1배에서 1.5배로 커졌다가 다시 작아집니다. element-c:
+      오른쪽 아래로 이동했다가 다시 원래 위치로 돌아옵니다. element-d: 360도
+      회전합니다. element-e: 매트릭스 변환으로 기울어지고 이동하는 효과를
+      반복합니다. element-f: 원근법이 적용된 상태에서 Y축으로 45도 회전했다가
+      다시 돌아옵니다. element-b: 크기가 1배에서 1.5배로 커졌다가 다시
+      작아집니다. element-c: 오른쪽 아래로 이동했다가 다시 원래 위치로
+      돌아옵니다. element-d: 360도 회전합니다. element-e: 매트릭스 변환으로
+      기울어지고 이동하는 효과를 반복합니다. element-f: 원근법이 적용된 상태에서
+      Y축으로 45도 회전했다가 다시 돌아옵니다. element-b: 크기가 1배에서 1.5배로
+      커졌다가 다시 작아집니다. element-c: 오른쪽 아래로 이동했다가 다시 원래
+      위치로 돌아옵니다. element-d: 360도 회전합니다. element-e: 매트릭스
+      변환으로 기울어지고 이동하는 효과를 반복합니다. element-f: 원근법이 적용된
+      상태에서 Y축으로 45도 회전했다가 다시 돌아옵니다.
+    </div>
+  </body>
+</html>
