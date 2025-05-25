@@ -1,0 +1,166 @@
+/* 사이드 메뉴 --------------------------*/
+.side-menu {
+  max-width: 290px;
+  position: fixed;
+  left: 50%;
+  top: 84px;
+  transform: translateX(calc(-50% + 322px));
+  display: none;
+  flex-direction: column;
+}
+
+.side-menu__user-profile {
+  display: flex;
+  align-items: center;
+  margin: 20px 0 22px;
+}
+.side-menu__user-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 12px;
+  flex-shrink: 0;
+  position: relative;
+}
+.side-menu__user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  flex: 1; /* 남은 공간을 차지하도록 설정, 버튼과 떨어지도록 */
+}
+.side-menu__user-info a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+  text-decoration: none; /* 밑줄 제거 */
+  text-transform: lowercase;
+  max-width: 180px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.side-menu__user-info span {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-light);
+  max-width: 180px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.side-menu__user-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  color: #0093f5;
+}
+
+.side-menu__suggestions-section {
+  display: flex;
+  flex-direction: column;
+}
+.side-menu__suggestions-header {
+  display: flex;
+  justify-content: space-between;
+}
+.side-menu__suggestions-header h2 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-light);
+}
+.side-menu__suggestions-header button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+.side-menu__suggestions-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0 24px;
+  padding-left: 4px;
+}
+.side-menu__suggestion {
+  display: flex;
+  align-items: center;
+}
+.side-menu__suggestion-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 12px;
+  flex-shrink: 0;
+  position: relative;
+}
+.side-menu__suggestion-info {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  flex: 1;
+  gap: 2px;
+}
+.side-menu__suggestion-info a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+  text-decoration: none; /* 밑줄 제거 */
+  text-transform: lowercase;
+  max-width: 180px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.side-menu__suggestion-info a:hover {
+  text-decoration: underline; /* 밑줄 표시 */
+}
+.side-menu__suggestion-info span {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-light);
+  max-width: 180px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.side-menu__suggestion-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  color: #0093f5;
+  flex-shrink: 0; /* 버튼이 너무 작아지지 않도록 설정 */
+}
+
+.side-menu__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: transparent;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-light);
+  flex-shrink: 0; /* 버튼이 너무 작아지지 않도록 설정 */
+}
+.side-menu__footer-list {
+  display: flex;
+  list-style: none; /* 리스트 스타일 제거 */
+}
+.side-menu__footer-link {
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+  .side-menu {
+    display: flex;
+  }
+}

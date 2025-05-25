@@ -138,10 +138,30 @@
 
 /* 오른쪽 -------------------------------------------------------- */
 .right-section {
+  width: 180px;
+  margin-right: 20px;
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-right: 24px;
+  justify-content: space-between;
+}
+
+/* 알림 빨간 원 & 안에 들어갈 숫자 */
+.notifications-icon-container {
+  position: relative;
+}
+
+.notifications-count {
+  position: absolute;
+  top: -2px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  font-size: 11px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-radius: 10px;
 }
 
 .profile-icon {
