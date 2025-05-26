@@ -1,0 +1,32 @@
+/* 컨텐츠 */
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 오리지널 */
+.content__originals {
+  margin: 20px 0;
+  padding: 0 14px;
+}
+.content__title {
+  margin-bottom: 10px;
+}
+.content__grid {
+  display: flex;
+  justify-content: space-around;
+}
+.content__item img {
+  width: 216px;
+  height: 294px;
+  cursor: pointer;
+}
+.content__item img:hover {
+  transform: scale(1.12);
+}
+
+/* 트렌딩 */
+.content__trending {
+  margin: 20px 0;
+  padding: 0 14px;
+}
