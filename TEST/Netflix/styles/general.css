@@ -16,16 +16,6 @@ textarea {
 }
 
 /* styles */
-/* @font-face {
-  font-family: "netflix";
-  src: url("TEST\Netflix\assets\fonts\NetflixSans-Regular.otf")
-    format("opentype");
-} */
-
-/* * {
-  font-family: "netflix", sans-serif;
-} */
-
 body {
   min-height: 100vh; /* 모니터 기준 사이즈 */
   display: flex;
