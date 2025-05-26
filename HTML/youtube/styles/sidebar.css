@@ -15,7 +15,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  cursor: pointer; /* 클릭 알려주는 시작적 지정 */
+  cursor: pointer; /* 클릭 알려주는 포인터 지정 */
 }
 
 .sidebar-link:hover {

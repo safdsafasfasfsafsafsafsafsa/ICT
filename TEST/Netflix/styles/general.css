@@ -1,0 +1,45 @@
+/* css reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*,
+button,
+input,
+select,
+textarea {
+  font-family: "roboto", sans-serif;
+}
+
+/* styles */
+/* @font-face {
+  font-family: "netflix";
+  src: url("TEST\Netflix\assets\fonts\NetflixSans-Regular.otf")
+    format("opentype");
+} */
+
+/* * {
+  font-family: "netflix", sans-serif;
+} */
+
+body {
+  min-height: 100vh; /* 모니터 기준 사이즈 */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background-color: var(--dark);
+  color: var(--white);
+}
+
+img {
+  max-width: 100%;
+}
+
+:root {
+  --white: #ffffff;
+  --dark: #262626;
+}

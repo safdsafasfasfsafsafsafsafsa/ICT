@@ -1,0 +1,38 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+}
+.header__content {
+  width: 100%;
+  padding: 10px 14px 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__left-section {
+  display: flex;
+  align-items: center;
+}
+.header__logo {
+  height: 30px;
+  cursor: pointer;
+}
+
+.header__right-section {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 16px;
+}
+.header__profile {
+  height: 36px;
+  align-items: center;
+  cursor: pointer;
+}
