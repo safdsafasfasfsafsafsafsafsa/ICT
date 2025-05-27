@@ -44,20 +44,20 @@ val = listItem.parentNode;
 val = listItem.parentElement;
 val = listItem.parentElement.parentElement; // 부모 요소의 부모 요소
 
-// // next sibling 반환
-// val = listItem.nextSibling;
-// val = listItem.nextElementSibling.nextElementSibling.previousElementSibling;
+// next sibling(다음 자식) 반환
+val = listItem.nextSibling;
+val = listItem.nextElementSibling.nextElementSibling.previousElementSibling;
 
-// // previous sibling 반환
-// val = listItem.previousSibling;
-// val = listItem.previousElementSibling;
+// previous sibling(이전 자식) 반환
+val = listItem.previousSibling;
+val = listItem.previousElementSibling; // 형제가 없다면 null 반환
+
 console.log("val", val);
 
-// // DOM Collection
-// for (let node of list.childNodes) {
-//     console.log(node); // 컬렉션 내의 모든 노드를 보여줍니다.
-// }
+// DOM Collection(배열과 유사한 객체, 반복 가능)
+for (let node of list.childNodes) {
+  console.log("node", node); // 컬렉션 내의 모든 노드를 보여줍니다.
+}
 
-// console.log(list.childNodes.filter) // undefined (filter 메서드가 없습니다.)
-
-console.log(Array.from(list.childNodes).filter);
+console.log("a", list.childNodes.filter); // undefined (배열이 아니므로 filter 메서드가 없습니다.)
+console.log("b", Array.from(list.childNodes).filter); // filter 메서드가 있습니다. (배열로 변환했기 때문입니다.)
