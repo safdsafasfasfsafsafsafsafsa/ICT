@@ -9,7 +9,6 @@
       }
     </style>
   </head>
-
   <body>
     <form>
       FORM
@@ -23,7 +22,7 @@
         elem.addEventListener(
           "click",
           (e) => alert(`캡쳐링: ${elem.tagName}`),
-          true
+          true // capture=true -> 캡쳐링 흐름 확인
         );
         elem.addEventListener("click", (e) => alert(`버블링: ${elem.tagName}`));
       }

@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Event Bubbling</title>
     <style>
-        body * {
-            margin: 10px;
-            border: 1px solid red;
-        }
+      body * {
+        margin: 10px;
+        border: 1px solid red;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <form onclick="alert('form')">FORM
-        <div onclick="alert('div')">DIV
-            <p onclick="event.stopPropagation()">P</p>
-        </div>
+  <body>
+    <form onclick="alert('form')">
+      FORM
+      <div onclick="alert('div')">
+        DIV
+        <!-- div가 작동하면 위에 있는 form도 작동 -->
+        <p onclick="event.stopPropagation()">P</p>
+      </div>
     </form>
-</body>
-
+  </body>
 </html>
