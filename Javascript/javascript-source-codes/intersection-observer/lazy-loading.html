@@ -35,8 +35,10 @@
     <script>
         // Intersection Observer 인스턴스
         const observer = new IntersectionObserver(function (entries, observer) {
+            console.log(entries);
+
             entries.forEach(entry => {
-                // 루트 요소와 타겟 요소가 교차하면 dataset에 있는 url을 src 에 넣어주기.
+                // 루트 요소와 타겟 요소가 교차하면 dataset에 있는 url을 src 에 넣어주기. (더미 -> 사진 교체)
                 if (entry.isIntersecting) {
                     entry.target.src = entry.target.dataset.src
 
@@ -47,7 +49,7 @@
         }, { threshold: 1 })
         // 타겟 요소의 100%가 루트 요소와 겹치면 콜백을 실행.
 
-        // 모든 img들을 관찰하기
+        // 만든 함수로 모든 img들을 관찰하기
         const imgs = document.querySelectorAll('img')
         imgs.forEach((img) => {
             observer.observe(img)
