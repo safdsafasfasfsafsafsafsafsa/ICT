@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo-App</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="todo-app/script.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <h1>Todo 앱</h1>
+      <button class="button-todo" type="submit">새로운 Todo 추가하기</button>
+    </header>
+    <main class="main">
+      <!-- flex-direction: column-reverse -->
+      <!-- 체크박스 누르면 div 내부 투명해지고 span 취소선-->
+      <!-- rewrite 누르면 텍스트 모드 변경해야? -->
+      <!-- delete하면 localStorage에서 제거 -->
+      <section class="todo-list">
+        <div class="todo-action">
+          <input type="checkbox" class="todo-action__checkbox" />
+          <span class="todo-action__text">밥먹기</span>
+          <button class="todo-action__rewrite"></button>
+          <button class="todo-action__delete"></button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
