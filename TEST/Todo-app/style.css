@@ -1,0 +1,52 @@
+body {
+  max-width: 600px; /* 메인 콘텐츠의 최대 너비 설정 */
+  margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 중앙 정렬 */
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column-reverse; /* 최신 항목이 위에 오도록 설정 */
+}
+
+.todo-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+.todo-action__checkbox:checked + .todo-action__text {
+  text-decoration: line-through;
+  color: rgb(66, 66, 66);
+  opacity: 0.6;
+}
+
+.todo-action__text {
+  margin-right: auto; /* 텍스트를 왼쪽으로 붙임 */
+  padding-left: 20px;
+}
+.todo-action__rewrite {
+  margin-left: auto; /* 이미지를 오른쪽으로 붙임 */
+  padding-right: 20px;
+  cursor: pointer;
+}
+.todo-action__delete {
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.todo-action img {
+  width: 1.3em;
+  height: 1.3em;
+  vertical-align: middle;
+}
