@@ -3,7 +3,6 @@ const todoActionRewriteAll = document.querySelectorAll(".todo-action__rewrite");
 const todoActionDeleteAll = document.querySelectorAll(".todo-action__delete");
 const todoList = document.querySelector(".todo-list");
 let todoCounter = parseInt(localStorage.getItem("todoCounter")) || 0;
-console.log("todoCounter:", todoCounter);
 
 // 항목 생성, 수정, 삭제 --------------------------------------------------------------------
 
@@ -12,8 +11,12 @@ function addTodo(todo = null) {
   const todoAction = document.createElement("div");
   todoAction.classList.add("todo-action");
 
-  todoCounter++;
   todoAction.classList.add(`todo-action-${todoCounter}`);
+  todoCounter++;
+
+  // 고유 ID 생성 (UUID 또는 고유 번호)
+  const uniqueId = todo ? todo.id : Date.now(); // 기존 데이터의 id 사용 또는 현재 시간으로 생성
+  todoAction.setAttribute("data-id", uniqueId); // 고유 ID를 data-id 속성으로 추가
 
   // 체크박스 생성
   const checkbox = document.createElement("input");
@@ -26,7 +29,7 @@ function addTodo(todo = null) {
   }
 
   // 텍스트(label) 생성
-  const text = document.createElement("label");
+  const text = document.createElement("span");
   text.classList.add("todo-action__text");
   if (todo) {
     text.textContent = todo.text;
@@ -58,17 +61,37 @@ function addTodo(todo = null) {
 }
 
 // 2. Todo 항목 수정
+function updateTodo(event) {
+  if (event.target.classList.contains("todo-action__rewrite")) {
+    const todoAction = event.target.closest(".todo-action");
+    const textElement = todoAction.querySelector(".todo-action__text");
+
+    // 텍스트 수정 가능 상태로 전환
+    if (!textElement.isContentEditable) {
+      textElement.contentEditable = "true"; // 수정 가능
+      textElement.focus(); // 포커스 설정
+    } else {
+      // 수정 완료 상태로 전환
+      textElement.contentEditable = "false"; // 수정 불가능
+      const newText = textElement.textContent; // 수정된 텍스트 가져오기
+
+      // 로컬스토리지 업데이트
+      updateTodoInLocalStorage(todoAction, newText);
+    }
+  }
+}
 
 // 3. Todo 항목 삭제
 function deleteTodo(event) {
   if (event.target.classList.contains("todo-action__delete")) {
     const todoAction = event.target.closest(".todo-action");
     if (todoAction) {
+      // classNum을 먼저 추출
+      const uniqueId = todoAction.getAttribute("data-id"); // 고유 ID 가져오기
+      // 로컬스토리지에서 삭제
+      deleteTodoFromLocalStorage(uniqueId);
       // HTML에서 삭제
       todoAction.remove();
-
-      // 로컬스토리지에서 삭제
-      deleteTodoFromLocalStorage(todoAction);
     }
   }
 }
@@ -83,25 +106,21 @@ function saveTodosToLocalStorage() {
   todoActions.forEach((todo) => {
     const checkbox = todo.querySelector(".todo-action__checkbox");
     const text = todo.querySelector(".todo-action__text");
-    const counter = todo.classList[1].split("-")[2] - 1; // 클래스 이름에서 숫자 추출
+    const uniqueId = todo.getAttribute("data-id"); // 고유 ID 가져오기
 
     todos.push({
+      id: uniqueId, // 고유 ID 저장
       text: text.textContent,
       completed: checkbox.checked,
-      count: counter,
     });
   });
 
   localStorage.setItem("todos", JSON.stringify(todos));
+  console.log("Updated todos:", todos);
 }
 
 function addTodoAndSave() {
   addTodo();
-  saveTodosToLocalStorage();
-}
-
-function deleteTodoAndSave(event) {
-  deleteTodo(event);
   saveTodosToLocalStorage();
 }
 
@@ -115,17 +134,40 @@ function loadTodosFromLocalStorage() {
   });
 }
 
-function deleteTodoFromLocalStorage(todoElement) {
+// 로컬스토리지에서 해당 Todo 항목 업데이트
+function updateTodoInLocalStorage(todoAction, newText) {
   const todos = JSON.parse(localStorage.getItem("todos")) || [];
-  const classNum = todoElement
-    .querySelector(".todo-action")
-    .classList[1].className.split("-")[2];
+  const uniqueId = todoAction.getAttribute("data-id"); // 고유 ID 가져오기
 
-  // 해당 텍스트와 일치하지 않는 항목만 남기기
-  const updatedTodos = todos.filter((todo) => todo.count !== classNum);
+  // 해당 Todo 항목 업데이트
+  todos.forEach((todo) => {
+    if (todo.id === uniqueId) {
+      todo.text = newText; // 텍스트 업데이트
+    }
+  });
+
+  // 로컬스토리지에 저장
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function updateTodoAndSave(event) {
+  updateTodo(event);
+  saveTodosToLocalStorage();
+}
+
+function deleteTodoFromLocalStorage(uniqueId) {
+  const todos = JSON.parse(localStorage.getItem("todos")) || [];
+
+  // 고유 ID와 일치하지 않는 항목만 남기기
+  const updatedTodos = todos.filter((todo) => todo.id !== uniqueId);
 
   // 로컬스토리지 업데이트
   localStorage.setItem("todos", JSON.stringify(updatedTodos));
+}
+
+function deleteTodoAndSave(event) {
+  deleteTodo(event);
+  saveTodosToLocalStorage();
 }
 
 // 실행 --------------------------------------------------------------------------------------
@@ -134,10 +176,15 @@ function deleteTodoFromLocalStorage(todoElement) {
 loadTodosFromLocalStorage();
 
 buttonTodo.addEventListener("click", addTodoAndSave);
-// todoActionRewriteAll.addEventListener("click", addTodoAndSave);
 
-todoActionDeleteAll.forEach((deleteButton) => {
-  deleteButton.addEventListener("click", (event) => {
+todoList.addEventListener("click", (event) => {
+  if (event.target.classList.contains("todo-action__rewrite")) {
+    updateTodoAndSave(event);
+  }
+});
+
+todoList.addEventListener("click", (event) => {
+  if (event.target.classList.contains("todo-action__delete")) {
     deleteTodoAndSave(event);
-  });
+  }
 });
