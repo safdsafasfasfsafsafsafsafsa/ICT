@@ -1,10 +1,13 @@
 team: Tigers
 
-manager: John
+manager: Brenda
 
-coach: Grace
+coach: Ruth
 
 members:
-  - Linda
-  - William
-  - David
+- Linda
+- William
+- David
+- George
+- Tyler
+- Kim
