@@ -3,7 +3,8 @@ team: Jaguars
 manager: Stanley
 
 members:
-- Caleb
-- Harvey
-- Myles
-- Pinkfong
+  - Caleb
+  - Harvey
+  - Myles
+  - Pinkfong
+  - stash3
