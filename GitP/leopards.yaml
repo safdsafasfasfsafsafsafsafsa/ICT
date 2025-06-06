@@ -1,16 +1,13 @@
 team: Leopards
 
-manager: Peter
+manager: Dooli
 
-coach: Rocket
+coach: Lupi
 
 members:
-  - Linda
-  - William
-  - David
-  - Olivia
-  - Evie
-  - Dongho
-  - Drax
-  - Groot
-  - stash2
+- Linda
+- William
+- David
+- Olivia
+- Evie
+- Dongho
