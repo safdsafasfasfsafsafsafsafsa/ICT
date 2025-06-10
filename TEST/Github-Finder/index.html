@@ -7,8 +7,58 @@
     <link rel="stylesheet" href="Github-Finder/style.css" />
   </head>
   <body>
-    <header class="header"></header>
-    <main></main>
+    <header class="header">
+      <span>Github Finder</span>
+    </header>
+    <main>
+      <!-- 머리: 유저 입력창 -->
+      <section class="input-username">
+        <h1>Search Github Users</h1>
+        <span>Enter a username to fetch a user profile and repos</span>
+        <input class="write-username" type="text" />
+      </section>
+      <!-- 중간: 유저 정보 출력 -->
+      <section class="profile">
+        <div class="picture-profile">
+          <img
+            class=""
+            src="https://via.placeholder.com/200x200.jpg"
+            alt="img"
+          />
+          <button class="view-profile">View Profile</button>
+        </div>
+        <div class="info">
+          <div class="info-repo">
+            <div id="repos">Public Repos: <span id="repos_num"></span></div>
+            <div id="gists">Public Gists: <span id="gists_num"></span></div>
+            <div id="followers">
+              Followers: <span id="followers_num"></span>
+            </div>
+            <div id="following">
+              Following: <span id="following_num"></span>
+            </div>
+          </div>
+          <div class="info-web">
+            <div id="company">Company: <span id="company_name"></span></div>
+            <div id="web">Website/Blog: <span id="web_name"></span></div>
+            <div id="location">Location: <span id="location_name"></span></div>
+            <div id="member">Member Since: <span id="member_since"></span></div>
+          </div>
+        </div>
+      </section>
+      <!-- 하단: 유저 repos 최신 5개 출력, js로 양산 -->
+      <section class="repos-list">
+        <!-- <div class="repo">
+          <span id="repo_link"></span>
+          <div id="repo_stars"></div>
+          <div id="repo_watchers"></div>
+          <div id="repo_forks"></div>
+        </div> -->
+      </section>
+    </main>
+    <footer>
+      <span>Github Finder &copy;</span>
+    </footer>
     <script src="Github-Finder/script.js"></script>
   </body>
 </html>

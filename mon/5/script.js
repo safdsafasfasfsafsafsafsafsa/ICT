@@ -115,6 +115,18 @@ function initSpreadsheet() {
   console.log(spreadsheet);
 }
 
-// cellStatus에 셀 번호 전달하는 함수,
+// cellStatus에 셀 번호 전달하는 함수
+function cellClickEvent(e) {
+  const cellEl = e.target.closest(".cell");
+  console.log(cellEl);
+  const row = parseInt(cellEl.dataset.row);
+  const col = parseInt(cellEl.dataset.col);
+  const cell = spreadsheet[row][col];
+
+  e.target.textContent = `${cell.colName} - ${cell.rowName}`;
+}
 
 initSpreadsheet();
+// document.querySelectorAll(".cell").forEach((cellEl) => {
+//   cellEl.addEventListener("click", cellClickEvent);
+// });
