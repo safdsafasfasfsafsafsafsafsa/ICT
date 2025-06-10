@@ -1,0 +1,26 @@
+#export-btn {
+  color: white;
+  background-color: green;
+  width: 130px;
+  height: 60px;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+#spreadsheet-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.cellRow {
+  display: flex;
+  flex-direction: row;
+}
+.cell {
+  padding: 10px;
+  border: 1px solid black;
+  text-align: center;
+  width: 80px;
+  height: 50px;
+  box-sizing: border-box;
+}

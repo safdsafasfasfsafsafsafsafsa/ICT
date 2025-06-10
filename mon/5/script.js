@@ -1,6 +1,7 @@
 const exportBtn = document.querySelector("#export-btn");
 const cellStatus = document.querySelector("#cell-status");
 const spreadsheetContainer = document.querySelector("#spreadsheet-container");
+const spreadsheet = [];
 
 const ROWS = 10;
 const COLS = 10;
@@ -34,18 +35,29 @@ const alphabets = [
 ];
 
 class Cell {
-  constructor(row, col, data, isHeader, disabled) {
+  constructor(
+    row,
+    col,
+    rowName,
+    colName,
+    data,
+    isHeader,
+    disabled,
+    active = false
+  ) {
     this.row = row;
     this.col = col;
+    this.rowName = rowName;
+    this.colName = colName;
     this.data = data;
     this.isHeader = isHeader;
     this.disabled = disabled;
+    this.active = active;
   }
 }
 
 function initSpreadsheet() {
   // html 투입
-  let spreadsheet = [];
   for (let i = 0; i < ROWS; i++) {
     // 클래스 cellRow 추가: cell 담기
     const cellRowEl = document.createElement("div");
@@ -54,24 +66,55 @@ function initSpreadsheet() {
 
     let spreadsheetRow = [];
     for (let j = 0; j < COLS; j++) {
-      let newCell = new Cell(i, j, "", false, false);
+      let cellData = "";
+      let isHeader = false;
+      let disabled = false;
+      if (i === 0) {
+        isHeader = true;
+        disabled = true;
+      }
+      if (j === 0) {
+        isHeader = true;
+        disabled = true;
+      }
+
+      let newCell = new Cell(
+        i,
+        j,
+        i,
+        alphabets[j - 1],
+        "",
+        isHeader,
+        disabled,
+        false
+      );
       spreadsheetRow.push(newCell);
 
       // 클래스 cell 추가
-      const cellRow = document.querySelector(".cellRow");
       const cellEl = document.createElement("div");
       cellEl.classList.add("cell");
-      cellRow.appendChild(cellEl);
+      cellRowEl.appendChild(cellEl);
 
-      const cell = document.querySelector(".cell");
       const spanEl = document.createElement("span");
       spanEl.classList.add("spanText");
-      spanEl.textContent = `${alphabets[i]} - ${j}`;
-      cell.appendChild(spanEl);
+      if (i === 0) {
+        if (j === 0) continue;
+        spanEl.textContent = `${alphabets[j - 1]}`;
+      } else {
+        if (j === 0) {
+          spanEl.textContent = `${i}`;
+        } else {
+          spanEl.textContent = ``;
+        }
+      }
+      // spanEl.textContent = `${i}-${alphabets[j - 1]}`;
+      cellEl.appendChild(spanEl);
     }
     spreadsheet.push(spreadsheetRow);
   }
   console.log(spreadsheet);
 }
+
+// cellStatus에 셀 번호 전달하는 함수,
 
 initSpreadsheet();
