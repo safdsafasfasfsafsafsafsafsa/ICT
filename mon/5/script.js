@@ -1,4 +1,7 @@
+const exportBtn = document.querySelector("#export-btn");
+const cellStatus = document.querySelector("#cell-status");
 const spreadsheetContainer = document.querySelector("#spreadsheet-container");
+
 const ROWS = 10;
 const COLS = 10;
 const alphabets = [
@@ -41,13 +44,30 @@ class Cell {
 }
 
 function initSpreadsheet() {
+  // html 투입
   let spreadsheet = [];
   for (let i = 0; i < ROWS; i++) {
-    let spreadsheetRow = [];
+    // 클래스 cellRow 추가: cell 담기
+    const cellRowEl = document.createElement("div");
+    cellRowEl.classList.add("cellRow");
+    spreadsheetContainer.appendChild(cellRowEl);
 
+    let spreadsheetRow = [];
     for (let j = 0; j < COLS; j++) {
-      let cell = new Cell(i, j, "", false, false);
-      spreadsheetRow.push(cell);
+      let newCell = new Cell(i, j, "", false, false);
+      spreadsheetRow.push(newCell);
+
+      // 클래스 cell 추가
+      const cellRow = document.querySelector(".cellRow");
+      const cellEl = document.createElement("div");
+      cellEl.classList.add("cell");
+      cellRow.appendChild(cellEl);
+
+      const cell = document.querySelector(".cell");
+      const spanEl = document.createElement("span");
+      spanEl.classList.add("spanText");
+      spanEl.textContent = `${alphabets[i]} - ${j}`;
+      cell.appendChild(spanEl);
     }
     spreadsheet.push(spreadsheetRow);
   }
