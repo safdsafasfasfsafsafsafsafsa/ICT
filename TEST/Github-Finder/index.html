@@ -10,22 +10,24 @@
     <header class="header">
       <span>Github Finder</span>
     </header>
-    <main>
+    <main class="main">
       <!-- 머리: 유저 입력창 -->
       <section class="input-username">
         <h1>Search Github Users</h1>
         <span>Enter a username to fetch a user profile and repos</span>
-        <input class="write-username" type="text" />
+        <input
+          class="write-username"
+          type="text"
+          placeholder="Type username and press enter"
+        />
       </section>
       <!-- 중간: 유저 정보 출력 -->
       <section class="profile">
         <div class="picture-profile">
-          <img
-            class=""
-            src="https://via.placeholder.com/200x200.jpg"
-            alt="img"
-          />
-          <button class="view-profile">View Profile</button>
+          <img src="https://loremflickr.com/200/200" alt="img" />
+          <a class="view-profile" href="https://github.com" target="_blank"
+            >View Profile</a
+          >
         </div>
         <div class="info">
           <div class="info-repo">
@@ -48,15 +50,16 @@
       </section>
       <!-- 하단: 유저 repos 최신 5개 출력, js로 양산 -->
       <section class="repos-list">
+        <h2>Latest Repos</h2>
         <!-- <div class="repo">
-          <span id="repo_link"></span>
+          <a id="repo_link" href="" target="_blank"></a>
           <div id="repo_stars"></div>
           <div id="repo_watchers"></div>
           <div id="repo_forks"></div>
         </div> -->
       </section>
     </main>
-    <footer>
+    <footer class="footer">
       <span>Github Finder &copy;</span>
     </footer>
     <script src="Github-Finder/script.js"></script>
