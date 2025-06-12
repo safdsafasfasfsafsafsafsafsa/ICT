@@ -1,5 +1,5 @@
-// let profileObj = {};
-// let reposArray = [];
+const reposList = document.querySelector(".repos-list");
+const writeUsername = document.querySelector(".write-username");
 
 // 깃허브 클래스
 class GitHub {
@@ -32,13 +32,14 @@ async function getUserData(name) {
     return;
   }
 
-  console.log(userData.profile);
-  console.log(userData.repos);
-
   const profileObj = userData.profile;
   const reposArray = userData.repos.sort(
     (a, b) => new Date(b.updated_at) - new Date(a.updated_at)
   ); // updated_at 최신순 정렬
+  // console.log(reposArray);
+  // for (let i = 0; i < 5; i++) {
+  //   console.log(reposArray[i].name);
+  // }
 
   return { profileObj, reposArray };
 }
@@ -71,29 +72,60 @@ function updateInfoWeb(company, blog, location, createdAt) {
   memberSince.textContent = createdAt;
 }
 function updateAndMakeRepos(
+  num,
   name,
   svn_url,
   stargazers_count,
   watchers_count,
   forks_count
 ) {
-  const repoLink = document.querySelector("#repo_link");
-  const repoStars = document.querySelector("#repo_stars");
-  const repoWatchers = document.querySelector("#repo_watchers");
-  const repoForks = document.querySelector("#repo_forks");
+  const newRepoClass = document.createElement("div");
+  newRepoClass.classList.add("repo");
+  newRepoClass.id = `repo_${num}`;
+  reposList.appendChild(newRepoClass);
+
+  const repoId = document.querySelector(`#repo_${num}`);
+  const newRepoLink = document.createElement("a");
+  newRepoLink.id = `repo_link_${num}`;
+  newRepoLink.setAttribute("href", "");
+  newRepoLink.setAttribute("target", "_blank");
+  repoId.appendChild(newRepoLink);
+  const newRepoStars = document.createElement("div");
+  newRepoStars.id = `repo_stars_${num}`;
+  repoId.appendChild(newRepoStars);
+  const newRepoWatchers = document.createElement("div");
+  newRepoWatchers.id = `repo_watchers_${num}`;
+  repoId.appendChild(newRepoWatchers);
+  const newRepoForks = document.createElement("div");
+  newRepoForks.id = `repo_forks_${num}`;
+  repoId.appendChild(newRepoForks);
+
+  const repoLink = document.querySelector(`#repo_link_${num}`);
+  const repoStars = document.querySelector(`#repo_stars_${num}`);
+  const repoWatchers = document.querySelector(`#repo_watchers_${num}`);
+  const repoForks = document.querySelector(`#repo_forks_${num}`);
   repoLink.textContent = name;
   repoLink.href = svn_url;
-  repoStars.textContent = stargazers_count;
-  repoWatchers.textContent = watchers_count;
-  repoForks.textContent = forks_count;
+  repoStars.textContent = `Stars: ${stargazers_count}`;
+  repoWatchers.textContent = `Watchers: ${watchers_count}`;
+  repoForks.textContent = `Forks: ${forks_count}`;
+}
+function clearRepos() {
+  for (let i = 0; i < 5; i++) {
+    const repoEl = document.querySelector(`#repo_${i}`);
+    if (!repoEl) continue;
+    repoEl.remove();
+  }
 }
 
 const github = new GitHub();
 
 // 1. profileObj - view-profile: input 읽어서 name 검색, 엔터로 인풋 넘김
-// getUserData("simonsmith");
-document.querySelector(".write-username").addEventListener("keydown", (e) => {
+// 예시 유저네임: simonsmith
+writeUsername.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
+    clearRepos();
+
     const username = e.target.value; // 입력한 텍스트 수집
     if (username) {
       const user = getUserData(username);
@@ -118,16 +150,30 @@ document.querySelector(".write-username").addEventListener("keydown", (e) => {
           userData.profileObj.created_at
         );
         // 2. reposArray - repo: updated_at 최신 탑5, name(svn_url), stargazers_count, watchers_count, forks_count
-        updateAndMakeRepos(
-          userData.reposArray.name,
-          userData.reposArray.svn_url,
-          userData.reposArray.stargazers_count,
-          userData.reposArray.watchers_count,
-          userData.reposArray.forks_count
-        );
+        for (let i = 0; i < 5; i++) {
+          if (!userData.reposArray[i]) {
+            updateAndMakeRepos(i, "", "", "", "", "");
+          } else {
+            updateAndMakeRepos(
+              i,
+              userData.reposArray[i].name,
+              userData.reposArray[i].svn_url,
+              userData.reposArray[i].stargazers_count,
+              userData.reposArray[i].watchers_count,
+              userData.reposArray[i].forks_count
+            );
+          }
+
+          console.log(userData.reposArray[i]);
+        }
       });
     } else {
       console.log("Please enter a valid username.");
     }
   }
+});
+
+// 새로고침 input 비우기
+document.addEventListener("DOMContentLoaded", () => {
+  writeUsername.value = ""; // 초기화
 });
