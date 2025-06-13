@@ -14,15 +14,20 @@
   flex-direction: column;
 }
 
-.cellRow {
+.cell-row {
   display: flex;
   flex-direction: row;
 }
 .cell {
   padding: 10px;
-  border: 1px solid black;
+  border: 1px solid gray;
   text-align: center;
   width: 80px;
-  height: 50px;
+  height: 40px;
+  outline: none;
   box-sizing: border-box;
+}
+.cell:focus {
+  background: #ddd;
+  border: 3px solid lightblue;
 }

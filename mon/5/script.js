@@ -40,7 +40,7 @@ class Cell {
     col,
     rowName,
     colName,
-    data,
+    cellData,
     isHeader,
     disabled,
     active = false
@@ -49,7 +49,7 @@ class Cell {
     this.col = col;
     this.rowName = rowName;
     this.colName = colName;
-    this.data = data; // 데이터
+    this.cellData = cellData; // 데이터
     this.isHeader = isHeader; // 헤더 여부
     this.disabled = disabled; // 수정 가능 여부
     this.active = active;
@@ -61,12 +61,22 @@ function initSpreadsheet() {
   for (let i = 0; i < ROWS; i++) {
     // 클래스 cellRow 추가: cell 담기
     const cellRowEl = document.createElement("div");
-    cellRowEl.classList.add("cellRow");
-    spreadsheetContainer.appendChild(cellRowEl);
-
+    // cellRowEl.className = "cellRow";
+    // spreadsheetContainer.appendChild(cellRowEl);
     let spreadsheetRow = [];
+
     for (let j = 0; j < COLS; j++) {
-      let cellData = "";
+      let cellData = ""; // 동적: 기본은 비어있고 헤더에 투입하기 위해
+      if (j === 0) {
+        cellData = i;
+      }
+      if (i === 0) {
+        cellData = alphabets[j - 1];
+      }
+      if (!cellData) {
+        cellData = ""; // undefined 지우기
+      }
+
       let isHeader = false;
       let disabled = false;
       if (i === 0) {
@@ -83,7 +93,7 @@ function initSpreadsheet() {
         j,
         i,
         alphabets[j - 1],
-        i + "-" + j, // 위치 출력에 쓸 데이터
+        cellData, // 위치 출력에 쓸 데이터
         isHeader,
         disabled,
         false
@@ -91,53 +101,58 @@ function initSpreadsheet() {
       spreadsheetRow.push(newCell);
 
       // 클래스 cell 추가
-      // createCellEl(cellRowEl);
-      const cellEl = document.createElement("div");
-      cellEl.classList.add("cell");
-      cellRowEl.appendChild(cellEl);
+      createCellEl(cellRowEl);
+      //   const cellEl = document.createElement("input");
+      //   cellEl.classList.add("cell header");
+      //   cellEl.id("cell_" + cell.row + cell.col);
+      //   cellRowEl.appendChild(cellEl);
 
-      const spanEl = document.createElement("span");
-      spanEl.classList.add("spanText");
-      if (i === 0) {
-        if (j === 0) continue;
-        spanEl.textContent = `${alphabets[j - 1]}`;
-      } else {
-        if (j === 0) {
-          spanEl.textContent = `${i}`;
-        } else {
-          spanEl.textContent = ``;
-        }
-      }
+      //   const spanEl = document.createElement("span");
+      //   spanEl.classList.add("spanText");
+      //   if (i === 0) {
+      //     if (j === 0) continue;
+      //     spanEl.textContent = `${alphabets[j - 1]}`;
+      //   } else {
+      //     if (j === 0) {
+      //       spanEl.textContent = `${i}`;
+      //     } else {
+      //       spanEl.textContent = ``;
+      //     }
+      //   }
 
-      cellEl.appendChild(spanEl);
+      //   cellEl.appendChild(spanEl);
     }
-    spreadsheet.push(spreadsheetRow);
+    spreadsheet.push(spreadsheetRow); // 데이터 완성
   }
+  drawSheet();
   console.log(spreadsheet);
 }
 
-function createCellEl(cellRowEl) {
-  const cellEl = document.createElement("div");
-  cellEl.classList.add("cell");
-  cellRowEl.appendChild(cellEl);
+// 동적 셀 생성
+function createCellEl(cell) {
+  // input 조작에 맞는 객체 속성을 만들어야.
+  const cellEl = document.createElement("input");
+  cellEl.className = "cell header";
+  cellEl.id = "cell_" + cell.row + cell.col;
+  cellEl.value = cell.cellData;
+  cellEl.disabled = cell.disabled;
 
-  const spanEl = document.createElement("span");
-  spanEl.classList.add("spanText");
-  if (i === 0) {
-    if (j === 0) {
-      spanEl.textContent = ``;
-    } else {
-      spanEl.textContent = `${alphabets[j - 1]}`;
+  return cellEl;
+}
+
+// 스프레드시트 틀 만들기
+function drawSheet() {
+  // 현 스프레드시트의 길이만큼 작업
+  for (let i = 0; i < spreadsheet.length; i++) {
+    const rowContainerEl = document.createElement("div");
+    rowContainerEl.className = "cell-row";
+
+    for (let j = 0; j < spreadsheet[i].length; j++) {
+      const cell = spreadsheet[i][j];
+      rowContainerEl.append(createCellEl(cell)); // input 속성인 cellEl을 리턴받아 row~에 삽입
     }
-  } else {
-    if (j === 0) {
-      spanEl.textContent = `${i}`;
-    } else {
-      spanEl.textContent = ``;
-    }
+    spreadsheetContainer.append(rowContainerEl);
   }
-  // spanEl.textContent = `${i}-${alphabets[j - 1]}`;
-  cellEl.appendChild(spanEl);
 }
 
 // cellStatus에 셀 번호 전달하는 함수
