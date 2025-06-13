@@ -1,9 +1,11 @@
 #export-btn {
   color: white;
   background-color: green;
-  width: 130px;
-  height: 60px;
-  box-shadow: none;
+  /* width: 130px;
+  height: 60px; */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
   cursor: pointer;
 }
 
