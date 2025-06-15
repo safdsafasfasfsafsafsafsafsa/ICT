@@ -1,9 +1,11 @@
 #export-btn {
   color: white;
   background-color: green;
-  width: 130px;
-  height: 60px;
-  box-shadow: none;
+  /* width: 130px;
+  height: 60px; */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
   cursor: pointer;
 }
 
@@ -12,15 +14,28 @@
   flex-direction: column;
 }
 
-.cellRow {
+.cell-row {
   display: flex;
   flex-direction: row;
 }
 .cell {
   padding: 10px;
-  border: 1px solid black;
+  border: 1px solid gray;
   text-align: center;
   width: 80px;
-  height: 50px;
+  height: 40px;
+  outline: none;
   box-sizing: border-box;
+}
+.cell:focus {
+  background: #ddd;
+  border: 3px solid lightblue;
+}
+.cell.header {
+  text-align: center;
+  background: #ddd;
+}
+.cell.header.active {
+  color: white;
+  background: lightblue;
 }
