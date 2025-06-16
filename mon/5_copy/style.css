@@ -14,12 +14,18 @@
   flex-direction: row;
 }
 .cell {
-  padding: 10px 20px;
-  border: 2px solid black;
+  width: 50px;
+  height: 30px;
+  border: 1px solid black;
+  text-align: center;
 }
 .cell:focus {
+  background-color: #ddd;
 }
 .cell.header {
+  background-color: gray;
+  color: white;
 }
 .cell.header.active {
+  background-color: lightblue;
 }
