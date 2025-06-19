@@ -16,7 +16,8 @@ body {
   /* border-width: 10px;
   border-style: solid;
   border-color: orange; */
-  border: 10px solid orange;
+  border-top: 50px solid orange;
+  border-bottom: 50px solid orange;
 
   /* 가운데 */
   position: absolute;
@@ -26,5 +27,18 @@ body {
 }
 
 h1 {
-  color: red;
+  color: orange;
+  /* background-color: antiquewhite; */
+  border-bottom: 5px solid orange;
+  width: 105px;
+  margin: 30px auto; /* 좌우 오토로 가운데 정렬 */
+}
+
+/* 백그라운드 컬러로 속성의 영역 빠르게 확인 가능 */
+ul {
+  background-color: antiquewhite;
+  width: 100px;
+  margin: 30px auto;
+  padding-top: 30px;
+  padding-bottom: 40px;
 }
