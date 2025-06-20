@@ -4,26 +4,34 @@ body {
 }
 
 .container {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  height: 50vh; /* 눂이는 고정값 쓰지 않는 편이 좋음 */
-  width: 600px;
+  align-items: center; */
+  /* height: 50vh; 눂이는 고정값 쓰지 않는 편이 좋음 */
   background-color: white;
-  padding: 50px;
+  width: 500px;
+  padding: 30px 50px;
+  margin: 50px auto;
 
   /* border-width: 10px;
   border-style: solid;
   border-color: orange; */
   border-top: 50px solid orange;
   border-bottom: 50px solid orange;
+  border-radius: 50px;
 
   /* 가운데 */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  box-sizing: border-box;
 }
 
 h1 {
