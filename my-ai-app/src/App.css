@@ -33,10 +33,35 @@
   }
 }
 
+h1 {
+  color: #007acc;
+  font-family: "Segoe UI", sans-serif;
+  text-align: center;
+}
+
+p {
+  color: gray;
+  font-size: 1.2rem;
+}
+
 .card {
   padding: 2em;
 }
 
 .read-the-docs {
   color: #888;
+}
+
+.my-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.my-button:hover {
+  background-color: #45a049;
 }
