@@ -1,0 +1,59 @@
+/* 초기화 */
+h1,
+p {
+  margin: 0;
+}
+
+body {
+  background-color: #666;
+}
+
+.wrapper {
+  background-color: #ddd;
+  width: 800px;
+  margin: 0 auto; /* 자신에게 좌우 가운데 정렬 */
+}
+
+/* 헤더 */
+.header {
+  background-image: url(img/shock-shocker.gif);
+  color: white;
+  height: 600px; /* 높이에 고정값은 영 아니긴 한데 임시로 */
+  text-align: center; /* 자식에게만 영향 */
+  /* padding-top: 50px; height에 더해지는 방식 */
+}
+
+.header .profile {
+  margin-top: 50px; /* 요소 개별로 줘야 전체 height에 영향을 주지 않음 */
+}
+
+.header h1 {
+  color: orangered;
+  margin: 10px 0;
+}
+
+.header p {
+  background-color: black; /* 텍스트 시인성 */
+  color: #888;
+  width: 400px;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* 컨텐츠 */
+.section {
+  background-color: white;
+  margin: 20px; /* 인접한 상하단 마진은 겹침 */
+  padding: 20px;
+}
+
+/* 푸터 */
+.footer {
+  background-color: #111;
+  color: #999;
+  padding: 10px 0;
+  text-align: center;
+  letter-spacing: 5px; /* 자간 */
+  text-indent: 5px; /* 들여쓰기 */
+}
