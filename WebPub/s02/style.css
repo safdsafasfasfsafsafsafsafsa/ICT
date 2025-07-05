@@ -1,10 +1,17 @@
 /* 초기화 */
 h1,
+h2,
+ul,
 p {
   margin: 0;
+  padding: 0;
 }
 
 body {
+  background-attachment: fixed; /* 스크롤 영향 없음 */
+  background-size: cover; /* 꽉 채우기 */
+  background-position: center;
+  background-image: url(img/GsqiMw0XsAAoqjX.jpg);
   background-color: #666;
 }
 
@@ -14,7 +21,7 @@ body {
   margin: 0 auto; /* 자신에게 좌우 가운데 정렬 */
 }
 
-/* 헤더 */
+/* 헤더 ------------------- */
 .header {
   background-image: url(img/shock-shocker.gif);
   color: white;
@@ -41,14 +48,46 @@ body {
   border-radius: 5px;
 }
 
-/* 컨텐츠 */
+/* 컨텐츠 --------------------------------- */
 .section {
+  background-image: url(img/3561839_emoji_emoticon_silly_icon.png);
+  background-size: 50px;
+  background-repeat: no-repeat; /* 작은 이미지의 반복 출력 방지 */
+  background-position: right 20px center; /* 좌우(오른쪽 기준 20 떨어지게) 상하 */
   background-color: white;
   margin: 20px; /* 인접한 상하단 마진은 겹침 */
   padding: 20px;
 }
 
-/* 푸터 */
+.skills {
+  /* css 우선 순위 준수 */
+  background-image: url(img/8708729_emoji_crying_icon.png);
+}
+
+.section h2 {
+  color: orangered;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #eee; /* 구분선 */
+}
+
+.section li {
+  list-style-type: none;
+  /* border-left: 5px solid #ddd;
+  padding: 6px 10px 4px; 상 좌우 하 */
+  background-image: url(img/8708782_emoji_cry_laugh_smile_happy_icon.png);
+  background-size: 30px;
+  background-repeat: no-repeat;
+  padding: 10px 40px 8px;
+}
+
+.section li:hover {
+  /* 이미지 내용물만 변경, 속성은 유지 */
+  background-image: url(img/339875_finger_fuck_gesture_middle_icon.png);
+  color: orangered;
+  border-color: orangered;
+}
+
+/* 푸터 ------------------------------------- */
 .footer {
   background-color: #111;
   color: #999;
