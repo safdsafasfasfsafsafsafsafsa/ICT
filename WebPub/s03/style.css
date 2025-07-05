@@ -1,0 +1,40 @@
+h1,
+h2,
+ul,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #666;
+}
+
+.box {
+  background-color: white;
+  width: 350px;
+  margin: 50px auto;
+}
+
+.box-img {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.box-contents {
+  /* 푸터와 완전 분리 위해 별도의 div */
+  padding: 20px;
+}
+
+.box-contents h1 {
+  /* 제목과 거리 두기 */
+  margin-bottom: 20px;
+  background-color: antiquewhite;
+  /* width: 140px; 꽉 찬 박스 구조 -> 크기 줄여야 가운데 정렬 가능
+  margin: 0 auto; */
+  text-align: center;
+}
+
+.box-footer {
+  background-color: aqua;
+}
