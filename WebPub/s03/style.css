@@ -5,20 +5,48 @@ p {
   margin: 0;
   padding: 0;
 }
+a {
+  /* 색상 상속받고 밑줄 지우기 */
+  color: inherit;
+  text-decoration: none;
+}
 
 body {
   background-color: #666;
+  text-align: center; /* 실제론 바디에 이런거 안 씀 */
 }
 
 .box {
+  vertical-align: bottom; /* 기준선을 텍스트가 아닌 바텀으로 */
+  display: inline-block;
   background-color: white;
   width: 350px;
-  margin: 50px auto;
+  /* margin: 50px auto; */
+  margin: 400px auto 0;
+  text-align: center; /* 자식 컨텐츠 정렬(상속) */
+}
+
+.box.red {
+  color: red;
+}
+
+.box.green {
+  color: green;
+}
+
+.box.blue {
+  color: blue;
 }
 
 .box-img {
+  background-color: orange;
   width: 300px;
-  margin: 0 auto;
+  height: 330px;
+  margin-top: -200px; /* 요소가 밖으로 튀어나오게 */
+
+  /* 블럭인지, 인라인인지 따라 가운데 정렬 방식이 다름 */
+  /* 블럭은 컨테이너, 인라인은 컨텐츠 -> 컨텐츠는 자체 정렬 불가 */
+  /* margin: 0 auto; */
 }
 
 .box-contents {
@@ -29,12 +57,46 @@ body {
 .box-contents h1 {
   /* 제목과 거리 두기 */
   margin-bottom: 20px;
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
   /* width: 140px; 꽉 찬 박스 구조 -> 크기 줄여야 가운데 정렬 가능
   margin: 0 auto; */
-  text-align: center;
+  /* text-align: center; */
+
+  /* 박스 상하로 직선이 감싸는 연출 */
+  border-top: 3px solid;
+  border-bottom: 3px solid;
+  display: inline-block; /* 텍스트 사이즈로 자동 조절 */
+}
+
+.box-contents p {
+  text-align: left;
+  color: #999;
 }
 
 .box-footer {
   background-color: aqua;
+  padding: 20px;
+}
+
+.button {
+  /* 부모 색상 이월 */
+  background-color: currentColor;
+  /* a 태그는 인라인이라 패딩 늘려도 버튼 크기 그대로 -> 인라인블럭 */
+  padding: 13px 20px 10px;
+  display: inline-block;
+  letter-spacing: 3px;
+  text-indent: 3px;
+  /* 버튼 떠있는 느낌 주기 */
+  border-bottom: 5px solid rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+  /* 클릭 효과: 텍스트 기준이라 클릭하면 전체 높이 영향 -> box에서 기준점 새로 정하기 */
+  border-bottom: 0;
+  /* 클릭할 때 손실된 보더 채우기 */
+  margin-top: 5px;
+}
+
+.button span {
+  color: white;
 }

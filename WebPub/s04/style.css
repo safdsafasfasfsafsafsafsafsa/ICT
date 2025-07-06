@@ -1,0 +1,64 @@
+body,
+h1,
+h2,
+ul,
+p {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style-type: none;
+}
+a {
+  /* 색상 상속받고 밑줄 지우기 */
+  color: inherit;
+  text-decoration: none;
+}
+
+body {
+  background-image: url(img/shock-shocker.gif);
+}
+
+.wrapper {
+  /* 세로로 이어지는 이미지 써서 길어지는 것처럼 트릭 */
+  background-image: url(img/339875_finger_fuck_gesture_middle_icon.png);
+  background-position: center;
+  background-color: #999;
+  width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+}
+
+.logo {
+  background-image: url(img/GsqiMw0XsAAoqjX.jpg);
+  display: inline-block;
+  width: 450px;
+  height: 140px;
+  text-indent: -9999px; /* IR 기법, 좀 구식 */
+  margin: 20px 0;
+}
+
+.menu {
+  /* background-color: orange; */
+  width: 300px;
+  margin: 30px auto;
+  color: #ddd;
+}
+
+.menu li {
+  margin-bottom: 5px;
+}
+
+.menu li a {
+  /* 클릭 범위 만들기: 기준을 블럭으로 */
+  display: block;
+  border: 3px solid; /* 부모 색상 상속 */
+  padding: 6px 0;
+}
+
+.menu li a:hover {
+  color: orange;
+}
