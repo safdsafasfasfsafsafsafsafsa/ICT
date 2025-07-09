@@ -69,9 +69,14 @@ body {
   margin: 50px 0;
   padding: 30px;
   border: 10px solid #3f2217;
+  color: rgb(31, 167, 27);
   border-radius: 10px;
   /* 그림자: x축 그림자 위치(안쪽 inset), y축 ~, 블러 강도, 크기, 색상. 중첩 가능 */
   box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.6);
+}
+
+.section h2 {
+  margin-bottom: 20px;
 }
 
 .footer {
