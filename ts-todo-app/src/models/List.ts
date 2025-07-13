@@ -13,7 +13,7 @@ interface IList {
 }
 
 export default class List implements IList {
-  // 인스턴스 하나만 만들기(싱클톤)
+  // 인스턴스 하나만 만들기(싱글톤)
   static instance = new List();
 
   private constructor(private _list: IListItem[] = []) {}
