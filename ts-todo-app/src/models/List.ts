@@ -2,6 +2,7 @@
 
 import type { IListItem } from "./ListItem";
 import ListItem from "./ListItem";
+import storage from "../utils/storage";
 
 interface IList {
   list: IListItem[];
@@ -30,6 +31,11 @@ export default class List implements IList {
     const parsedList: { _id: string; _item: string; _checked: boolean }[] =
       JSON.parse(storedList);
 
+    // const parsedList =
+    //   storage.get<{ _id: string; _item: string; _checked: boolean }[]>(
+    //     "myList"
+    //   );
+
     // listItem 인스턴스 객체 생성 -> list 인스턴스 객체에 넣기
     parsedList.forEach((itemObj) => {
       // listItem에서 정보 받아오기
@@ -46,7 +52,8 @@ export default class List implements IList {
 
   save(): void {
     // str 형식으로 변환해 저장
-    localStorage.setItem("myList", JSON.stringify(this._list));
+    // localStorage.setItem("myList", JSON.stringify(this._list));
+    storage.set("myList", this._list);
   }
 
   clearList(): void {

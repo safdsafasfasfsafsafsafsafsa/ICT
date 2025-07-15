@@ -42,9 +42,6 @@ const initApp = (): void => {
     listInstance.clearList();
     listTemplateInstance.clear();
   });
-
-  listInstance.load();
-  listTemplateInstance.render(listInstance);
 };
 
 initApp();
