@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Lists from "./components/Lists";
+import Form from "./components/Form";
 
 export default function App() {
   const initTodoData = [
@@ -44,10 +45,10 @@ export default function App() {
   //   setTodoData(newTodoData); // 내용물을 new~로 변경
   // };
 
-  const handleChange = (e) => {
-    console.log(e.target.value);
-    setValue(e.target.value);
-  };
+  // const handleChange = (e) => {
+  //   console.log(e.target.value);
+  //   setValue(e.target.value);
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -105,7 +106,7 @@ export default function App() {
         ))} */}
         <Lists todoData={todoData} setTodoData={setTodoData} />
         {/* 폼 입력 */}
-        <form style={{ display: "flex" }} onSubmit={handleSubmit}>
+        {/* <form style={{ display: "flex" }} onSubmit={handleSubmit}>
           <input
             type="text"
             name="value"
@@ -120,7 +121,8 @@ export default function App() {
             className="btn"
             style={{ flex: "1" }}
           />
-        </form>
+        </form> */}
+        <Form handleSubmit={handleSubmit} value={value} setValue={setValue} />
       </div>
     </div>
   );
