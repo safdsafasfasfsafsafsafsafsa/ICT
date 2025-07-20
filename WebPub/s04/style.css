@@ -69,7 +69,7 @@ body {
   margin: 50px 0;
   padding: 30px;
   border: 10px solid #3f2217;
-  color: rgb(31, 167, 27);
+  color: rgb(245, 17, 17);
   border-radius: 10px;
   /* 그림자: x축 그림자 위치(안쪽 inset), y축 ~, 블러 강도, 크기, 색상. 중첩 가능 */
   box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.6);
@@ -77,6 +77,60 @@ body {
 
 .section h2 {
   margin-bottom: 20px;
+  font-size: 100px; /* 폰트에 따라 실제 높이 달라짐 */
+  /* line-height: 1; 진짜 높이로 설정, 기본값은 normal */
+  line-height: 174px;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: "Bitcount Prop Single", system-ui;
+  background-repeat: no-repeat;
+  background-position: right center; /* 우측 중앙 정렬 */
+}
+
+/* 좌우 번갈아가며 정렬 변화 */
+.section:nth-child(even) h2 {
+  background-position: left center;
+  text-align: right;
+}
+
+.section h2.animal01 {
+  background-image: url(img/8708729_emoji_crying_icon.png);
+  color: orange;
+}
+.section h2.animal02 {
+  background-image: url(img/8708729_emoji_crying_icon.png);
+  color: orange;
+}
+.section h2.animal03 {
+  background-image: url(img/8708729_emoji_crying_icon.png);
+  color: orange;
+}
+.section h2.animal04 {
+  background-image: url(img/8708729_emoji_crying_icon.png);
+  color: orange;
+}
+.section h2.animal05 {
+  background-image: url(img/8708729_emoji_crying_icon.png);
+  color: orange;
+}
+.section h2.animal06 {
+  background-image: url(img/8708729_emoji_crying_icon.png);
+  color: orange;
+}
+.section h2.animal07 {
+  background-image: url(img/8708729_emoji_crying_icon.png);
+  color: orange;
+}
+
+.section p {
+  /* 자간 */
+  line-height: 1.6;
+}
+
+.section p strong {
+  background-color: #3f2217;
+  padding: 0 20px;
+  border-radius: 10px;
+  color: yellow;
 }
 
 .footer {
