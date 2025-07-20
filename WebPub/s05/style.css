@@ -10,148 +10,85 @@ li {
   list-style-type: none;
 }
 a {
-  /* 색상 상속받고 밑줄 지우기 */
   color: inherit;
   text-decoration: none;
 }
 
 body {
-  background-image: url(img/shock-shocker.gif);
+  background-color: #222;
 }
 
 .wrapper {
-  /* 세로로 이어지는 이미지 써서 길어지는 것처럼 트릭 */
-  background-image: url(img/339875_finger_fuck_gesture_middle_icon.png);
-  background-position: center;
-  background-color: #999;
+  /* background-color: white; */
   width: 800px;
-  margin: 0 auto 100px;
-}
-
-.header {
-  text-align: center;
-}
-
-.logo {
-  background-image: url(img/GsqiMw0XsAAoqjX.jpg);
-  display: inline-block;
-  width: 450px;
-  height: 140px;
-  text-indent: -9999px; /* IR 기법, 좀 구식 */
-  margin: 20px 0;
-}
-
-.menu {
-  /* background-color: orange; */
-  width: 300px;
-  margin: 30px auto;
-  color: #ddd;
-}
-
-.menu li {
-  margin-bottom: 5px;
-}
-
-.menu li a {
-  /* 클릭 범위 만들기: 기준을 블럭으로 */
-  display: block;
-  border: 3px solid; /* 부모 색상 상속 */
-  padding: 6px 0;
-}
-
-.menu li a:hover {
-  color: orange;
+  margin: 0 auto;
 }
 
 .section {
-  background-image: url(img/8708782_emoji_cry_laugh_smile_happy_icon.png);
-  background-color: #70410d;
-  margin: 50px 0;
+  color: yellow;
   padding: 30px;
-  border: 10px solid #3f2217;
-  color: rgb(245, 17, 17);
-  border-radius: 10px;
-  /* 그림자: x축 그림자 위치(안쪽 inset), y축 ~, 블러 강도, 크기, 색상. 중첩 가능 */
-  box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.6);
-}
-
-.section h2 {
-  margin-bottom: 20px;
-  font-size: 100px; /* 폰트에 따라 실제 높이 달라짐 */
-  /* line-height: 1; 진짜 높이로 설정, 기본값은 normal */
-  line-height: 174px;
-  /* font-family: Arial, Helvetica, sans-serif; */
-  font-family: "Bitcount Prop Single", system-ui;
-  background-repeat: no-repeat;
-  background-position: right center; /* 우측 중앙 정렬 */
-}
-
-/* 좌우 번갈아가며 정렬 변화 */
-.section:nth-child(even) h2 {
-  background-position: left center;
+  margin: 20px 0;
   text-align: right;
 }
 
-.section h2.animal01 {
-  background-image: url(img/8708729_emoji_crying_icon.png);
-  color: orange;
+.section:nth-child(even) {
+  text-align: left;
 }
-.section h2.animal02 {
-  background-image: url(img/8708729_emoji_crying_icon.png);
-  color: orange;
+.section:nth-child(even) .section-cover {
+  float: right;
 }
-.section h2.animal03 {
-  background-image: url(img/8708729_emoji_crying_icon.png);
-  color: orange;
-}
-.section h2.animal04 {
-  background-image: url(img/8708729_emoji_crying_icon.png);
-  color: orange;
-}
-.section h2.animal05 {
-  background-image: url(img/8708729_emoji_crying_icon.png);
-  color: orange;
-}
-.section h2.animal06 {
-  background-image: url(img/8708729_emoji_crying_icon.png);
-  color: orange;
-}
-.section h2.animal07 {
-  background-image: url(img/8708729_emoji_crying_icon.png);
-  color: orange;
+.section:nth-child(even) h2 span {
+  float: right;
 }
 
-.section p {
-  /* 자간 */
-  line-height: 1.6;
+.section.blue {
+  background-color: blue;
 }
 
-.section p strong {
-  background-color: #3f2217;
-  padding: 0 20px;
-  border-radius: 10px;
-  color: yellow;
+.section.red {
+  background-color: red;
 }
 
-.footer {
-  background-color: #70410d;
-  color: white;
-  text-align: center;
-  border-bottom: 10px solid rgba(0, 0, 0, 0.4); /* 바닥 조금 어둡게 */
-  border-radius: 10px;
-  overflow: hidden; /* 가상 요소도 부모 뒤로 보내기 */
+.section.yellow {
+  background-color: yellow;
+  color: orangered;
 }
 
-/* 가상 요소: 없는 걸 있는 것처럼 속이기 */
-.footer::before {
-  content: ""; /* 컨텐츠를 넣어야 공간 생성 */
-  background-color: #70410d;
-  background-image: url(img/3561839_emoji_emoticon_silly_icon.png);
-  background-repeat: no-repeat;
+.section::after {
+  /* float 대상으로 억지로 높이 조정하면 안됨 -> 경계선 만들기 */
+  content: "";
   display: block;
-  height: 50px;
+  clear: both;
 }
 
-.footer p {
-  padding: 10px 0;
+.section h2 {
+  /* background-color: antiquewhite; */
+  line-height: 1;
+  font-family: "DM Serif Text", serif;
+  font-size: 80px;
+  margin-bottom: 30px;
+  display: inline-block;
 }
+
+.section h2 span {
+  /* 부모의 절반 크기 */
+  font-size: 0.5em;
+  float: left;
+  margin: 0 0.3em;
+  opacity: 0.5;
+}
+
+.section h2 span::after {
+  content: "kcal";
+  font-size: 0.5em;
+}
+
+.section-cover {
+  float: left;
+  width: 200px;
+}
+
+/* .clear {
+  background-color: red;
+  clear: left;
+} */
