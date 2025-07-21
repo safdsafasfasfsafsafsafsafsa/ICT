@@ -26,7 +26,9 @@ export default function List({ id, title, completed, todoData, setTodoData }) {
     console.log(id);
     let newTodoData = todoData.filter((data) => data.id !== id);
     console.log(newTodoData);
+
     setTodoData(newTodoData); // 내용물을 new~로 변경
+    localStorage.setItem("todoData", JSON.stringify(newTodoData)); // 로컬 저장: 키, 밸류(텍스트형) 넣기
   };
 
   const handleCompletedChange = (id) => {
@@ -37,7 +39,9 @@ export default function List({ id, title, completed, todoData, setTodoData }) {
       }
       return data;
     });
+
     setTodoData(newTodoData);
+    localStorage.setItem("todoData", JSON.stringify(newTodoData)); // 로컬 저장: 키, 밸류(텍스트형) 넣기
   };
 
   const handleEditChange = (e) => {
@@ -55,6 +59,7 @@ export default function List({ id, title, completed, todoData, setTodoData }) {
     });
 
     setTodoData(newTodoData);
+    localStorage.setItem("todoData", JSON.stringify(newTodoData)); // 로컬 저장: 키, 밸류(텍스트형) 넣기
     setIsEditing(false);
   };
 

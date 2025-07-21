@@ -4,18 +4,22 @@ import Lists from "./components/Lists";
 import Form from "./components/Form";
 
 export default function App() {
-  const initTodoData = [
-    {
-      id: "1",
-      title: "공부",
-      completed: true,
-    },
-    {
-      id: "2",
-      title: "청소",
-      completed: false,
-    },
-  ];
+  // 로컬스토리지에 데이터 있으면 불러오기
+  const initTodoData = localStorage.getItem("todoData")
+    ? JSON.parse(localStorage.getItem("todoData"))
+    : [];
+  // const initTodoData = [
+  //   {
+  //     id: "1",
+  //     title: "공부",
+  //     completed: true,
+  //   },
+  //   {
+  //     id: "2",
+  //     title: "청소",
+  //     completed: false,
+  //   },
+  // ];
   const [todoData, setTodoData] = useState(initTodoData);
 
   const initValue = ""; // 타이핑 기억
@@ -60,6 +64,7 @@ export default function App() {
     };
 
     setTodoData((todoData) => [...todoData, newTodo]);
+    localStorage.setItem("todoData", JSON.stringify([...todoData, newTodo])); // 로컬 저장: 키, 밸류(텍스트형) 넣기
     setValue([""]);
   };
 

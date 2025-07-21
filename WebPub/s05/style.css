@@ -20,15 +20,26 @@ body {
 
 .wrapper {
   /* background-color: white; */
-  width: 800px;
+  width: 960px;
   margin: 0 auto;
+}
+.wrapper::after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 .section {
+  /* width: 300px; */
+  width: 800px;
   color: yellow;
   padding: 30px;
+  /* padding: 10px; */
   margin: 20px 0;
   text-align: right;
+  /* 넘친 요소 숨기기 */
+  overflow: hidden;
+  /* float: left; */
 }
 
 .section:nth-child(even) {
@@ -86,6 +97,24 @@ body {
 .section-cover {
   float: left;
   width: 200px;
+  /* 네거티브 마진: 요소 넘침 */
+  margin: 0 -60px;
+  transition: margin 0.5s;
+}
+
+.section p {
+  /* 네거티브 마진으로 틀어진 p 위치 재조정 */
+  width: 500px;
+  margin-left: auto; /* 우측으로 몰기 */
+}
+
+.section:nth-child(even) p {
+  margin-left: 0;
+}
+
+/* 마우스 호버 애니메이션 */
+.section:hover .section-cover {
+  margin: 0;
 }
 
 /* .clear {
