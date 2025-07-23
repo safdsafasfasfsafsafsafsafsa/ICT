@@ -1,0 +1,139 @@
+body,
+h1,
+h2,
+ul,
+p {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style-type: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body {
+  background-color: #222;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.wrapper {
+  /* background-color: antiquewhite; */
+  width: 800px;
+  margin: 150px auto;
+  /* root 크기에 맞춰 조정, 넘치는 자식 속성 컷하기 */
+  /* display: flow-root; */
+  /* overflow: hidden; */
+  /* overflow: scroll; */
+}
+
+.menu {
+  background-color: aqua;
+  color: aliceblue;
+}
+
+.menu li {
+  float: left;
+}
+
+.menu li a {
+  padding: 20px;
+  display: block;
+}
+
+.menu li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar,
+.contents {
+  background-color: white;
+  border-radius: 3px;
+}
+
+.sidebar {
+  float: right; /* 오른쪽 정렬 */
+  width: 250px;
+  /* height: 400px; */
+  margin-left: 20px;
+  text-align: center;
+  color: #555;
+}
+
+.sidebar-section {
+  margin: 20px 0;
+}
+
+.cover {
+  width: 100%; /* 부모 기준 */
+  margin-top: -100px;
+}
+
+.title {
+  line-height: 1;
+  color: #222;
+}
+
+.price {
+  color: #222;
+  font-size: 30px;
+}
+.price::before {
+  content: "$";
+  font-size: 0.7em;
+  margin-right: 0.2em;
+  vertical-align: middle;
+  opacity: 0.5;
+}
+
+.button {
+  background-color: gray;
+  color: bisque;
+  display: block;
+  margin: 5px 20px;
+  padding: 12px 0 10px 0;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  text-indent: 0.2em;
+}
+
+.button.share {
+  background-color: rgb(66, 61, 54);
+}
+
+.contents {
+  /* border: 10px solid green; */
+  padding: 30px;
+  /* 사이드바 float 지키면서 보더 시작과 안 겹치려면? overflow + 부모 clearfix */
+  /* 구형 브라우저도 고려를 해야 */
+  overflow: hidden;
+}
+
+.section {
+  background-color: antiquewhite;
+  margin-bottom: 20px;
+}
+.section:last-child {
+  /* 마지막 자식만 바텀 제거 */
+  margin-bottom: 0;
+}
+
+.section h2 {
+  border-bottom: 2px solid #555;
+  color: black;
+}
+
+.message {
+  background-color: #ddd;
+  margin-bottom: 10px;
+}
+.message:last-child {
+  margin-bottom: 0;
+}
