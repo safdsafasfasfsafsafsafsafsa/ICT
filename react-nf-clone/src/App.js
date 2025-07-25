@@ -2,6 +2,8 @@ import "./App.css";
 import Nav from "./components/Nav";
 import Banner from "./components/Banner";
 import Row from "./components/Row";
+import Footer from "./components/Footer";
+
 import requests from "./api/requests";
 
 function App() {
@@ -44,6 +46,7 @@ function App() {
         id="DM"
         fetchUrl={requests.fetchDocumentaries}
       />
+      <Footer></Footer>
     </div>
   );
 }
