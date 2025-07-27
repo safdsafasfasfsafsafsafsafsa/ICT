@@ -10,17 +10,17 @@ export default function Row({ isLargeRow, title, id, fetchUrl }) {
   const [modalOpen, setModalOpen] = useState(false); // 모달 오픈 확인
   const [movieSelected, setMovieSelected] = useState({}); // 선택한 영화 호출
 
-  const handleClick = (movie) => {
-    console.log("tf0", modalOpen);
-    setModalOpen(true);
-    setMovieSelected(movie);
-    console.log("movie", movie);
-    console.log("tf1", modalOpen);
-  };
-
   useEffect(() => {
     fetchMovieData();
   }, []);
+
+  const handleClick = (movie) => {
+    // console.log("tf0", modalOpen);
+    setModalOpen(true);
+    setMovieSelected(movie);
+    // console.log("movie", movie);
+    // console.log("tf1", modalOpen);
+  };
 
   const fetchMovieData = async () => {
     const request = await axios.get(fetchUrl);
