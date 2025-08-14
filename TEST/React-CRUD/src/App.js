@@ -46,29 +46,6 @@ function App() {
   }, [isVisible]);
 
   // -----------------------------------------------------
-  // 토스트 출력
-  // const renderToast = () => {
-  //   console.log("renderToast");
-  //   if (toast === "create") {
-  //     return <div className="toast">아이템이 생성되었습니다.</div>;
-  //   }
-  //   if (toast === "update") {
-  //     return <div className="toast">아이템이 수정되었습니다.</div>;
-  //   }
-  //   if (toast === "delete") {
-  //     return <div className="toast delete">아이템이 삭제되었습니다.</div>;
-  //   }
-  //   return null;
-  // };
-
-  // const showToast = () => {
-  //   console.log("showToast");
-  //   setIsVisible(true);
-  //   setTimeout(() => {
-  //     setIsVisible(false);
-  //   }, 2500);
-  // };
-
   // create
   const handleSubmit = (e) => {
     e.preventDefault();

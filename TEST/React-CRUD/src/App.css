@@ -32,6 +32,10 @@ body {
   text-align: center;
 }
 
+.toast.delete {
+  background-color: orange;
+}
+
 /* 타이틀 */
 .title {
   padding: 30px;
