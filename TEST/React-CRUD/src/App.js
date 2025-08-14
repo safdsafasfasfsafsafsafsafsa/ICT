@@ -49,22 +49,22 @@ function App() {
   };
 
   const handleChangeTodo = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setTextTodo(e.target.value);
   };
 
   const handleChangeSpending = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setTextSpending(e.target.value);
   };
 
   // deleteAll
-  // const handleClick = (id) => {
-  //   console.log(id);
-  //   let newTodoData = todoData.filter((data) => data.id !== id);
-  //   console.log(newTodoData);
-  //   setTodoData(newTodoData); // 내용물을 new~로 변경
-  // };
+  const handleClickDeleteAll = (e) => {
+    e.preventDefault();
+
+    localStorage.removeItem("data");
+    setData([]);
+  };
 
   // 토스트 출력
   const renderToast = () => {
@@ -150,7 +150,9 @@ function App() {
               </div>
             ))}
           </div>
-          <button className="delete-btn">목록 지우기</button>
+          <button className="delete-btn" onClick={handleClickDeleteAll}>
+            목록 지우기
+          </button>
         </form>
       </section>
       <footer>
