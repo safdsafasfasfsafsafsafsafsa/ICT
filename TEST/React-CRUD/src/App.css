@@ -41,6 +41,7 @@ body {
 .container {
   display: flex;
   flex-direction: column;
+  background-color: white;
   padding: 20px;
   border: 1px solid black;
 }
@@ -94,13 +95,23 @@ body {
 .list {
   display: grid;
   grid-template-columns: 6fr 5fr 30px 30px;
+  align-items: center;
   border: 1px solid black;
   padding: 10px 15px;
   margin-bottom: 10px;
 }
 
-.list img {
-  width: 20px;
+.list-btn {
+  background: none; /* 배경색 제거 */
+  border: none; /* 테두리 제거 */
+  padding: 0; /* 내부 여백 제거 */
+  cursor: pointer; /* 마우스 커서를 손가락 모양으로 변경 */
+  margin-right: 5px;
+}
+
+.list-btn img {
+  display: block;
+  width: 100%;
   height: auto;
 }
 
@@ -117,6 +128,7 @@ footer {
   padding: 10px;
   position: absolute;
   right: 0;
+  font-size: 18pt;
 }
 
 @media screen and (min-width: 1180px) {
