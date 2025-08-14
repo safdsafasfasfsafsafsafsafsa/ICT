@@ -31,6 +31,44 @@ function App() {
   const [isVisible, setIsVisible] = useState(false);
 
   // -----------------------------------------------------
+  useEffect(() => {
+    console.log("showToast");
+    let timer;
+    if (isVisible) {
+      timer = setTimeout(() => {
+        setIsVisible(false);
+      }, 2500);
+    }
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [isVisible]);
+
+  // -----------------------------------------------------
+  // 토스트 출력
+  // const renderToast = () => {
+  //   console.log("renderToast");
+  //   if (toast === "create") {
+  //     return <div className="toast">아이템이 생성되었습니다.</div>;
+  //   }
+  //   if (toast === "update") {
+  //     return <div className="toast">아이템이 수정되었습니다.</div>;
+  //   }
+  //   if (toast === "delete") {
+  //     return <div className="toast delete">아이템이 삭제되었습니다.</div>;
+  //   }
+  //   return null;
+  // };
+
+  // const showToast = () => {
+  //   console.log("showToast");
+  //   setIsVisible(true);
+  //   setTimeout(() => {
+  //     setIsVisible(false);
+  //   }, 2500);
+  // };
+
   // create
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,20 +79,20 @@ function App() {
       spending: textSpending,
     };
 
-    console.log(newData);
     setData((data) => [...data, newData]);
     localStorage.setItem("data", JSON.stringify([...data, newData])); // 로컬 저장: 키, 밸류(텍스트형) 넣기
     setTextTodo([""]);
     setTextSpending([""]);
+
+    setToast("create");
+    setIsVisible(true);
   };
 
   const handleChangeTodo = (e) => {
-    // console.log(e.target.value);
     setTextTodo(e.target.value);
   };
 
   const handleChangeSpending = (e) => {
-    // console.log(e.target.value);
     setTextSpending(e.target.value);
   };
 
@@ -64,27 +102,6 @@ function App() {
 
     localStorage.removeItem("data");
     setData([]);
-  };
-
-  // 토스트 출력
-  const renderToast = () => {
-    if (toast === "create") {
-      return <div className="toast">아이템이 생성되었습니다.</div>;
-    }
-    if (toast === "update") {
-      return <div className="toast">아이템이 수정되었습니다.</div>;
-    }
-    if (toast === "delete") {
-      return <div className="toast delete">아이템이 삭제되었습니다.</div>;
-    }
-    return null;
-  };
-
-  const showToast = () => {
-    setIsVisible(true);
-    setTimeout(() => {
-      setIsVisible(false);
-    }, 2500);
   };
 
   // 삭제는 json에 직접 접근하면 되고, 수정은?
@@ -99,7 +116,15 @@ function App() {
     <div className="App">
       {/* h1 위에 상태 변화 따라 출력하도록 알림 숨기기, 하나만 출력하려면? */}
       <header>
-        {showToast && <>{renderToast}</>}
+        {isVisible && toast === "create" && (
+          <div className="toast">아이템이 생성되었습니다.</div>
+        )}
+        {isVisible && toast === "update" && (
+          <div className="toast">아이템이 수정되었습니다.</div>
+        )}
+        {isVisible && toast === "delete" && (
+          <div className="toast delete">아이템이 삭제되었습니다.</div>
+        )}
         <h1 className="title">예산 계산기</h1>
       </header>
       {/* 컨테이너 */}
