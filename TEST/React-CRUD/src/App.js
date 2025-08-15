@@ -26,6 +26,10 @@ function App() {
   const [textTodo, setTextTodo] = useState(initTextTodo);
   const [textSpending, setTextSpending] = useState(initTextSpending);
 
+  // 수정 상태 체크
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedTitle, setEditedTitle] = useState("");
+
   // 토스트 출력
   const [toast, setToast] = useState("");
   const [isVisible, setIsVisible] = useState(false);
@@ -47,7 +51,7 @@ function App() {
 
   // -----------------------------------------------------
   // create
-  const handleSubmit = (e) => {
+  const handleSubmitCreate = (e) => {
     e.preventDefault();
 
     let newData = {
@@ -73,6 +77,16 @@ function App() {
     setTextSpending(e.target.value);
   };
 
+  // delete
+  const handleClickDelete = (id) => {
+    console.log(id);
+    let newData = data.filter((data) => data.id !== id);
+    console.log(newData);
+
+    setData(newData); // 내용물을 new~로 변경
+    localStorage.setItem("data", JSON.stringify(newData));
+  };
+
   // deleteAll
   const handleClickDeleteAll = (e) => {
     e.preventDefault();
@@ -81,7 +95,21 @@ function App() {
     setData([]);
   };
 
-  // 삭제는 json에 직접 접근하면 되고, 수정은?
+  // update
+  const handleSubmitUpdate = (e) => {
+    e.preventDefault();
+
+    // const newData = data.map((data) => {
+    //   if (data.id === id) {
+    //     data.title = editedTitle;
+    //   }
+    //   return data;
+    // });
+
+    // setData(newData);
+    // localStorage.setItem("todoData", JSON.stringify(newData));
+    // setIsEditing(false);
+  };
 
   // 소비 합
   const totalSpending = data.reduce(
@@ -107,55 +135,89 @@ function App() {
       {/* 컨테이너 */}
       <section className="container">
         {/* 작성폼 */}
-        <form onSubmit={handleSubmit}>
-          <div className="writing">
-            <div className="writing__todo">
-              <p className="writing__title">지출 항목</p>
-              <input
-                type="text"
-                placeholder="예) 도서"
-                className="todo__text"
-                name="todo"
-                value={textTodo}
-                onChange={handleChangeTodo}
-              />
+        {isEditing ? (
+          <form onSubmit={handleSubmitUpdate}>
+            <div className="writing">
+              <div className="writing__todo">
+                <p className="writing__title">지출 항목</p>
+                <input
+                  type="text"
+                  className="todo__text"
+                  name="todo"
+                  value={textTodo}
+                  onChange={handleChangeTodo}
+                />
+              </div>
+              <div className="writing__spending">
+                <p className="writing__title">비용</p>
+                <input
+                  type="number"
+                  className="spending__text"
+                  name="spending"
+                  value={textSpending}
+                  onChange={handleChangeSpending}
+                />
+              </div>
             </div>
-            <div className="writing__spending">
-              <p className="writing__title">비용</p>
-              <input
-                type="number"
-                className="spending__text"
-                name="spending"
-                value={textSpending}
-                onChange={handleChangeSpending}
-              />
+            <button className="write-btn" type="submit">
+              수정
+            </button>
+          </form>
+        ) : (
+          <form onSubmit={handleSubmitCreate}>
+            <div className="writing">
+              <div className="writing__todo">
+                <p className="writing__title">지출 항목</p>
+                <input
+                  type="text"
+                  placeholder="예) 도서"
+                  className="todo__text"
+                  name="todo"
+                  value={textTodo}
+                  onChange={handleChangeTodo}
+                />
+              </div>
+              <div className="writing__spending">
+                <p className="writing__title">비용</p>
+                <input
+                  type="number"
+                  className="spending__text"
+                  name="spending"
+                  value={textSpending}
+                  onChange={handleChangeSpending}
+                />
+              </div>
             </div>
-          </div>
-          <button className="write-btn" type="submit">
-            제출
-          </button>
-        </form>
+            <button className="write-btn" type="submit">
+              제출
+            </button>
+          </form>
+        )}
         <div className="margin-only"></div>
         {/* 목록: json 읽어 map으로 복제 */}
-        <form action="">
-          <div className="lists">
-            {initData.map((data) => (
-              <div key={data.id} className="list">
-                <p className="list__todo">{data.todo}</p>
-                <p className="list__spending">{data.spending}</p>
-                <button className="list-btn list__update">
-                  <img src="/img/pencil.svg" alt="수정" />
-                </button>
-                <button className="list-btn list__delete">
-                  <img src="/img/trash-can.svg" alt="삭제" />
-                </button>
-              </div>
-            ))}
-          </div>
-          <button className="delete-btn" onClick={handleClickDeleteAll}>
-            목록 지우기
-          </button>
-        </form>
+        <div className="lists">
+          {initData.map((data) => (
+            <div key={data.id} className="list">
+              <p className="list__todo">{data.todo}</p>
+              <p className="list__spending">{data.spending}</p>
+              <button
+                className="list-btn list__update"
+                // onClick={setIsEditing(true)}
+              >
+                <img src="/img/pencil.svg" alt="수정" />
+              </button>
+              <button
+                className="list-btn list__delete"
+                onClick={() => handleClickDelete(data.id)}
+              >
+                <img src="/img/trash-can.svg" alt="삭제" />
+              </button>
+            </div>
+          ))}
+        </div>
+        <button className="delete-btn" onClick={handleClickDeleteAll}>
+          목록 지우기
+        </button>
       </section>
       <footer>
         <div className="result">총 지출: {totalSpending}</div>

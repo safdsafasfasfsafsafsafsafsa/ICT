@@ -80,6 +80,11 @@ body {
   margin-right: auto;
 }
 
+.todo__text,
+.spending__text {
+  height: 25px;
+}
+
 .write-btn {
   width: 150px;
 }
