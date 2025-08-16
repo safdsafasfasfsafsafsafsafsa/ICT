@@ -1,4 +1,5 @@
-import react, { useState, useEffect } from "react";
+import react, { useState, useEffect, useContext } from "react";
+import { EditContext } from "../contexts/EditContext";
 import Task from "./Task";
 
 export default function Tasks({
@@ -9,6 +10,9 @@ export default function Tasks({
   isVisible,
   setIsVisible,
 }) {
+  const { isEditing } = useContext(EditContext);
+  const { setIsEditing } = useContext(EditContext);
+
   // 입력
   const initTextTodo = "";
   const initTextSpending = "";
@@ -16,7 +20,7 @@ export default function Tasks({
   const [textSpending, setTextSpending] = useState(initTextSpending);
 
   // 수정 상태 체크
-  const [isEditing, setIsEditing] = useState(false);
+  // const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState("");
 
   const handleSubmitCreate = (e) => {
