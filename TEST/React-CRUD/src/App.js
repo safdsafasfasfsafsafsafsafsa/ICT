@@ -16,12 +16,6 @@ function App() {
     : [];
   const [data, setData] = useState(initData);
 
-  // 입력
-  const initTextTodo = "";
-  const initTextSpending = "";
-  const [textTodo, setTextTodo] = useState(initTextTodo);
-  const [textSpending, setTextSpending] = useState(initTextSpending);
-
   // 수정 상태 체크
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState("");
@@ -46,33 +40,6 @@ function App() {
   }, [isVisible]);
 
   // -----------------------------------------------------
-  // create
-  const handleSubmitCreate = (e) => {
-    e.preventDefault();
-
-    let newData = {
-      id: Date.now(),
-      todo: textTodo,
-      spending: textSpending,
-    };
-
-    setData((data) => [...data, newData]);
-    localStorage.setItem("data", JSON.stringify([...data, newData])); // 로컬 저장: 키, 밸류(텍스트형) 넣기
-    setTextTodo([""]);
-    setTextSpending([""]);
-
-    setToast("create");
-    setIsVisible(true);
-  };
-
-  const handleChangeTodo = (e) => {
-    setTextTodo(e.target.value);
-  };
-
-  const handleChangeSpending = (e) => {
-    setTextSpending(e.target.value);
-  };
-
   // delete
   const handleClickDelete = (id) => {
     console.log(id);
@@ -176,14 +143,6 @@ function App() {
           //     수정
           //   </button>
           // </form>
-          <Tasks
-            data={data}
-            setData={setData}
-            toast={toast}
-            setToast={setToast}
-            isVisible={isVisible}
-            setIsVisible={setIsVisible}
-          />
         ) : (
           // <form onSubmit={handleSubmitCreate}>
           //   <div className="tasks">
@@ -213,14 +172,6 @@ function App() {
           //     제출
           //   </button>
           // </form>
-          <Tasks
-            data={data}
-            setData={setData}
-            toast={toast}
-            setToast={setToast}
-            isVisible={isVisible}
-            setIsVisible={setIsVisible}
-          />
         )} */}
         <div className="margin-only"></div>
         {/* 목록: json 읽어 map으로 복제 */}
