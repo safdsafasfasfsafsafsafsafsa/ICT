@@ -51,37 +51,27 @@ body {
 }
 
 /* 작성폼 */
-.writing {
+.tasks {
   display: flex;
   flex-direction: row;
   padding-bottom: 20px;
   gap: 1rem; /* 자식 요소 간격 */
 }
 
-.writing__title {
+.task__title {
   padding-bottom: 10px;
 }
 
-.writing__todo,
-.writing__spending {
+.task {
   flex: 1; /* 균일 분배 */
+  margin-right: auto;
 }
 
-.writing__todo input,
-.writing__spending input {
+.task input {
   width: 100%;
 }
 
-.writing__todo {
-  margin-right: auto;
-}
-
-.writing__spending {
-  margin-right: auto;
-}
-
-.todo__text,
-.spending__text {
+.task__input {
   height: 25px;
 }
 

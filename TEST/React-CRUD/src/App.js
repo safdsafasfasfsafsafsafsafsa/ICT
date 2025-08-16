@@ -9,11 +9,6 @@ function App() {
   //     todo: "식비",
   //     spending: "1200",
   //   },
-  //   {
-  //     id: "2",
-  //     todo: "밥",
-  //     spending: "11000",
-  //   },
   // ];
   const initData = localStorage.getItem("data")
     ? JSON.parse(localStorage.getItem("data"))
@@ -85,6 +80,9 @@ function App() {
 
     setData(newData); // 내용물을 new~로 변경
     localStorage.setItem("data", JSON.stringify(newData));
+
+    setToast("delete");
+    setIsVisible(true);
   };
 
   // deleteAll
@@ -93,6 +91,9 @@ function App() {
 
     localStorage.removeItem("data");
     setData([]);
+
+    setToast("delete");
+    setIsVisible(true);
   };
 
   // update
@@ -109,6 +110,9 @@ function App() {
     // setData(newData);
     // localStorage.setItem("todoData", JSON.stringify(newData));
     // setIsEditing(false);
+
+    setToast("update");
+    setIsVisible(true);
   };
 
   // 소비 합
@@ -137,22 +141,22 @@ function App() {
         {/* 작성폼 */}
         {isEditing ? (
           <form onSubmit={handleSubmitUpdate}>
-            <div className="writing">
-              <div className="writing__todo">
-                <p className="writing__title">지출 항목</p>
+            <div className="tasks">
+              <div className="task">
+                <p className="task__title">지출 항목</p>
                 <input
                   type="text"
-                  className="todo__text"
+                  className="task__input"
                   name="todo"
                   value={textTodo}
                   onChange={handleChangeTodo}
                 />
               </div>
-              <div className="writing__spending">
-                <p className="writing__title">비용</p>
+              <div className="task">
+                <p className="task__title">비용</p>
                 <input
                   type="number"
-                  className="spending__text"
+                  className="task__input"
                   name="spending"
                   value={textSpending}
                   onChange={handleChangeSpending}
@@ -165,23 +169,23 @@ function App() {
           </form>
         ) : (
           <form onSubmit={handleSubmitCreate}>
-            <div className="writing">
-              <div className="writing__todo">
-                <p className="writing__title">지출 항목</p>
+            <div className="tasks">
+              <div className="task">
+                <p className="task__title">지출 항목</p>
                 <input
                   type="text"
                   placeholder="예) 도서"
-                  className="todo__text"
+                  className="task__input"
                   name="todo"
                   value={textTodo}
                   onChange={handleChangeTodo}
                 />
               </div>
-              <div className="writing__spending">
-                <p className="writing__title">비용</p>
+              <div className="task">
+                <p className="task__title">비용</p>
                 <input
                   type="number"
-                  className="spending__text"
+                  className="task__input"
                   name="spending"
                   value={textSpending}
                   onChange={handleChangeSpending}
