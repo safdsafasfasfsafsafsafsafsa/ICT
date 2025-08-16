@@ -1,7 +1,7 @@
 import react, { useState, useEffect } from "react";
-// import Task from './Task';
+import Task from "./Task";
 
-export default function Task({
+export default function Tasks({
   data,
   setData,
   toast,
@@ -18,10 +18,6 @@ export default function Task({
   // 수정 상태 체크
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState("");
-
-  // 토스트 출력
-  //   const [toast, setToast] = useState("");
-  //   const [isVisible, setIsVisible] = useState(false);
 
   const handleSubmitCreate = (e) => {
     e.preventDefault();
@@ -73,26 +69,20 @@ export default function Task({
       {isEditing ? (
         <form onSubmit={handleSubmitUpdate}>
           <div className="tasks">
-            <div className="task">
-              <p className="task__title">지출 항목</p>
-              <input
-                type="text"
-                className="task__input"
-                name="todo"
-                value={textTodo}
-                onChange={handleChangeTodo}
-              />
-            </div>
-            <div className="task">
-              <p className="task__title">비용</p>
-              <input
-                type="number"
-                className="task__input"
-                name="spending"
-                value={textSpending}
-                onChange={handleChangeSpending}
-              />
-            </div>
+            <Task
+              text="지출 항목"
+              type="text"
+              name="todo"
+              value={textTodo}
+              onChange={handleChangeTodo}
+            />
+            <Task
+              text="비용"
+              type="number"
+              name="spending"
+              value={textSpending}
+              onChange={handleChangeSpending}
+            />
           </div>
           <button className="write-btn" type="submit">
             수정
@@ -101,27 +91,20 @@ export default function Task({
       ) : (
         <form onSubmit={handleSubmitCreate}>
           <div className="tasks">
-            <div className="task">
-              <p className="task__title">지출 항목</p>
-              <input
-                type="text"
-                placeholder="예) 도서"
-                className="task__input"
-                name="todo"
-                value={textTodo}
-                onChange={handleChangeTodo}
-              />
-            </div>
-            <div className="task">
-              <p className="task__title">비용</p>
-              <input
-                type="number"
-                className="task__input"
-                name="spending"
-                value={textSpending}
-                onChange={handleChangeSpending}
-              />
-            </div>
+            <Task
+              text="지출 항목"
+              type="text"
+              name="todo"
+              value={textTodo}
+              onChange={handleChangeTodo}
+            />
+            <Task
+              text="비용"
+              type="number"
+              name="spending"
+              value={textSpending}
+              onChange={handleChangeSpending}
+            />
           </div>
           <button className="write-btn" type="submit">
             제출

@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
+import Tasks from "./components/Tasks";
 
 function App() {
   // 저장 데이터
@@ -139,64 +140,88 @@ function App() {
       {/* 컨테이너 */}
       <section className="container">
         {/* 작성폼 */}
-        {isEditing ? (
-          <form onSubmit={handleSubmitUpdate}>
-            <div className="tasks">
-              <div className="task">
-                <p className="task__title">지출 항목</p>
-                <input
-                  type="text"
-                  className="task__input"
-                  name="todo"
-                  value={textTodo}
-                  onChange={handleChangeTodo}
-                />
-              </div>
-              <div className="task">
-                <p className="task__title">비용</p>
-                <input
-                  type="number"
-                  className="task__input"
-                  name="spending"
-                  value={textSpending}
-                  onChange={handleChangeSpending}
-                />
-              </div>
-            </div>
-            <button className="write-btn" type="submit">
-              수정
-            </button>
-          </form>
+        <Tasks
+          data={data}
+          setData={setData}
+          toast={toast}
+          setToast={setToast}
+          isVisible={isVisible}
+          setIsVisible={setIsVisible}
+        />
+        {/* {isEditing ? (
+          // <form onSubmit={handleSubmitUpdate}>
+          //   <div className="tasks">
+          //     <div className="task">
+          //       <p className="task__title">지출 항목</p>
+          //       <input
+          //         type="text"
+          //         className="task__input"
+          //         name="todo"
+          //         value={textTodo}
+          //         onChange={handleChangeTodo}
+          //       />
+          //     </div>
+          //     <div className="task">
+          //       <p className="task__title">비용</p>
+          //       <input
+          //         type="number"
+          //         className="task__input"
+          //         name="spending"
+          //         value={textSpending}
+          //         onChange={handleChangeSpending}
+          //       />
+          //     </div>
+          //   </div>
+          //   <button className="write-btn" type="submit">
+          //     수정
+          //   </button>
+          // </form>
+          <Tasks
+            data={data}
+            setData={setData}
+            toast={toast}
+            setToast={setToast}
+            isVisible={isVisible}
+            setIsVisible={setIsVisible}
+          />
         ) : (
-          <form onSubmit={handleSubmitCreate}>
-            <div className="tasks">
-              <div className="task">
-                <p className="task__title">지출 항목</p>
-                <input
-                  type="text"
-                  placeholder="예) 도서"
-                  className="task__input"
-                  name="todo"
-                  value={textTodo}
-                  onChange={handleChangeTodo}
-                />
-              </div>
-              <div className="task">
-                <p className="task__title">비용</p>
-                <input
-                  type="number"
-                  className="task__input"
-                  name="spending"
-                  value={textSpending}
-                  onChange={handleChangeSpending}
-                />
-              </div>
-            </div>
-            <button className="write-btn" type="submit">
-              제출
-            </button>
-          </form>
-        )}
+          // <form onSubmit={handleSubmitCreate}>
+          //   <div className="tasks">
+          //     <div className="task">
+          //       <p className="task__title">지출 항목</p>
+          //       <input
+          //         type="text"
+          //         placeholder="예) 도서"
+          //         className="task__input"
+          //         name="todo"
+          //         value={textTodo}
+          //         onChange={handleChangeTodo}
+          //       />
+          //     </div>
+          //     <div className="task">
+          //       <p className="task__title">비용</p>
+          //       <input
+          //         type="number"
+          //         className="task__input"
+          //         name="spending"
+          //         value={textSpending}
+          //         onChange={handleChangeSpending}
+          //       />
+          //     </div>
+          //   </div>
+          //   <button className="write-btn" type="submit">
+          //     제출
+          //   </button>
+          // </form>
+          <Tasks
+            data={data}
+            setData={setData}
+            toast={toast}
+            setToast={setToast}
+            isVisible={isVisible}
+            setIsVisible={setIsVisible}
+          />
+        )} */}
         <div className="margin-only"></div>
         {/* 목록: json 읽어 map으로 복제 */}
         <div className="lists">

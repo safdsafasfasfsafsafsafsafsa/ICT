@@ -1,9 +1,7 @@
-import react, { useState, useEffect } from "react";
-
-export default function Task({ type, name, value, onChange }) {
+export default function Task({ text, type, name, value, onChange }) {
   return (
     <div className="task">
-      <p className="task__title">지출 항목</p>
+      <p className="task__title">{text}</p>
       <input
         className="task__input"
         type={type}
