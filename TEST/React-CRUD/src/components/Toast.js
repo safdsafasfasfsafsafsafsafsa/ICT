@@ -1,10 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
-export default function Toast({ toast }) {
-  // 토스트 출력
-  //   const [toast, setToast] = useState("");
-  const [isVisible, setIsVisible] = useState(false);
-
+export default function Toast({ toast, isVisible, setIsVisible }) {
   //   toast 변경 시 시간 초기화되도록
   useEffect(() => {
     if (toast) {

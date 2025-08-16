@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { EditProvider } from "./contexts/EditContext";
+import { IdProvider } from "./contexts/IdContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <EditProvider>
-      <App />
+      <IdProvider>
+        <App />
+      </IdProvider>
     </EditProvider>
   </React.StrictMode>
 );

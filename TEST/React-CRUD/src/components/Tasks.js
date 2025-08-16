@@ -1,5 +1,6 @@
 import react, { useState, useEffect, useContext } from "react";
 import { EditContext } from "../contexts/EditContext";
+import { IdContext } from "../contexts/IdContext";
 import Task from "./Task";
 
 export default function Tasks({
@@ -10,8 +11,15 @@ export default function Tasks({
   isVisible,
   setIsVisible,
 }) {
+  const { targetId } = useContext(IdContext);
+  const { setTargetId } = useContext(IdContext);
+
+  // 수정 상태 체크
   const { isEditing } = useContext(EditContext);
   const { setIsEditing } = useContext(EditContext);
+
+  const [editedTodo, setEditedTodo] = useState("");
+  const [editedSpending, setEditedSpending] = useState("");
 
   // 입력
   const initTextTodo = "";
@@ -19,10 +27,17 @@ export default function Tasks({
   const [textTodo, setTextTodo] = useState(initTextTodo);
   const [textSpending, setTextSpending] = useState(initTextSpending);
 
-  // 수정 상태 체크
-  // const [isEditing, setIsEditing] = useState(false);
-  const [editedTitle, setEditedTitle] = useState("");
+  // -------------------------
+  useEffect(() => {
+    if (targetId) {
+      const foundItem = data.find((item) => item.id === targetId);
+      setEditedTodo(foundItem.todo);
+      setEditedSpending(foundItem.spending);
+    }
+  }, [targetId]);
 
+  // --------------------------
+  // create
   const handleSubmitCreate = (e) => {
     e.preventDefault();
 
@@ -53,16 +68,17 @@ export default function Tasks({
   const handleSubmitUpdate = (e) => {
     e.preventDefault();
 
-    // const newData = data.map((data) => {
-    //   if (data.id === id) {
-    //     data.title = editedTitle;
-    //   }
-    //   return data;
-    // });
+    const newData = data.map((data) => {
+      if (data.id === targetId) {
+        data.todo = editedTodo;
+        data.spending = editedSpending;
+      }
+      return data;
+    });
 
-    // setData(newData);
-    // localStorage.setItem("todoData", JSON.stringify(newData));
-    // setIsEditing(false);
+    setData(newData);
+    localStorage.setItem("data", JSON.stringify(newData));
+    setIsEditing(false);
 
     setToast("update");
     setIsVisible(true);
@@ -77,14 +93,14 @@ export default function Tasks({
               text="지출 항목"
               type="text"
               name="todo"
-              value={textTodo}
+              value={editedTodo}
               onChange={handleChangeTodo}
             />
             <Task
               text="비용"
               type="number"
               name="spending"
-              value={textSpending}
+              value={editedSpending}
               onChange={handleChangeSpending}
             />
           </div>
