@@ -111,6 +111,64 @@ export default function Tasks({
           </button>
         </form>
       )}
+      {/* {isEditing ? (
+          // <form onSubmit={handleSubmitUpdate}>
+          //   <div className="tasks">
+          //     <div className="task">
+          //       <p className="task__title">지출 항목</p>
+          //       <input
+          //         type="text"
+          //         className="task__input"
+          //         name="todo"
+          //         value={textTodo}
+          //         onChange={handleChangeTodo}
+          //       />
+          //     </div>
+          //     <div className="task">
+          //       <p className="task__title">비용</p>
+          //       <input
+          //         type="number"
+          //         className="task__input"
+          //         name="spending"
+          //         value={textSpending}
+          //         onChange={handleChangeSpending}
+          //       />
+          //     </div>
+          //   </div>
+          //   <button className="write-btn" type="submit">
+          //     수정
+          //   </button>
+          // </form>
+        ) : (
+          // <form onSubmit={handleSubmitCreate}>
+          //   <div className="tasks">
+          //     <div className="task">
+          //       <p className="task__title">지출 항목</p>
+          //       <input
+          //         type="text"
+          //         placeholder="예) 도서"
+          //         className="task__input"
+          //         name="todo"
+          //         value={textTodo}
+          //         onChange={handleChangeTodo}
+          //       />
+          //     </div>
+          //     <div className="task">
+          //       <p className="task__title">비용</p>
+          //       <input
+          //         type="number"
+          //         className="task__input"
+          //         name="spending"
+          //         value={textSpending}
+          //         onChange={handleChangeSpending}
+          //       />
+          //     </div>
+          //   </div>
+          //   <button className="write-btn" type="submit">
+          //     제출
+          //   </button>
+          // </form>
+        )} */}
     </>
   );
 }
