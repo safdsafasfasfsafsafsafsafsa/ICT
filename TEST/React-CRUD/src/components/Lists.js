@@ -1,14 +1,12 @@
-import react, { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { EditContext } from "../contexts/EditContext";
 import { IdContext } from "../contexts/IdContext";
 import List from "./List";
 
 export default function Lists({ data, setData, setToast, setIsVisible }) {
-  const { targetId } = useContext(IdContext);
   const { setTargetId } = useContext(IdContext);
 
   // 수정 상태 체크
-  const { isEditing } = useContext(EditContext);
   const { setIsEditing } = useContext(EditContext);
 
   // update

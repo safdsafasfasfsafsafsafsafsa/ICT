@@ -4,7 +4,6 @@ export default function Toast({ toast, isVisible, setIsVisible }) {
   //   toast 변경 시 시간 초기화되도록
   useEffect(() => {
     if (toast) {
-      console.log("showToast");
       setIsVisible(true);
 
       const timer = setTimeout(() => {

@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Toast from "./components/Toast";
 import Tasks from "./components/Tasks";
 import Lists from "./components/Lists";
@@ -18,27 +18,9 @@ function App() {
     : [];
   const [data, setData] = useState(initData);
 
-  // 수정 상태 체크
-  // const [isEditing, setIsEditing] = useState(false);
-  // const [editedTitle, setEditedTitle] = useState("");
-
   // 토스트 출력
   const [toast, setToast] = useState("");
   const [isVisible, setIsVisible] = useState(false);
-
-  // -----------------------------------------------------
-  // delete
-  const handleClickDelete = (id) => {
-    console.log(id);
-    let newData = data.filter((data) => data.id !== id);
-    console.log(newData);
-
-    setData(newData); // 내용물을 new~로 변경
-    localStorage.setItem("data", JSON.stringify(newData));
-
-    setToast("delete");
-    setIsVisible(true);
-  };
 
   // deleteAll
   const handleClickDeleteAll = (e) => {
@@ -50,25 +32,6 @@ function App() {
     setToast("delete");
     setIsVisible(true);
   };
-
-  // update
-  // const handleSubmitUpdate = (e) => {
-  //   e.preventDefault();
-
-  //   // const newData = data.map((data) => {
-  //   //   if (data.id === id) {
-  //   //     data.title = editedTitle;
-  //   //   }
-  //   //   return data;
-  //   // });
-
-  //   // setData(newData);
-  //   // localStorage.setItem("todoData", JSON.stringify(newData));
-  //   // setIsEditing(false);
-
-  //   setToast("update");
-  //   setIsVisible(true);
-  // };
 
   // 소비 합
   const totalSpending = data.reduce(
@@ -104,26 +67,6 @@ function App() {
           setToast={setToast}
           setIsVisible={setIsVisible}
         />
-        {/* <div className="lists">
-          {initData.map((data) => (
-            <div key={data.id} className="list">
-              <p className="list__todo">{data.todo}</p>
-              <p className="list__spending">{data.spending}</p>
-              <button
-                className="list-btn list__update"
-                // onClick={setIsEditing(true)}
-              >
-                <img src="/img/pencil.svg" alt="수정" />
-              </button>
-              <button
-                className="list-btn list__delete"
-                onClick={() => handleClickDelete(data.id)}
-              >
-                <img src="/img/trash-can.svg" alt="삭제" />
-              </button>
-            </div>
-          ))}
-        </div> */}
         <button className="delete-btn" onClick={handleClickDeleteAll}>
           목록 지우기
         </button>
