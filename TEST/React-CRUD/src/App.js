@@ -19,7 +19,7 @@ function App() {
   const [data, setData] = useState(initData);
 
   // 토스트 출력
-  const [toast, setToast] = useState("");
+  const [toast, setToast] = useState({});
   const [isVisible, setIsVisible] = useState(false);
 
   // deleteAll
@@ -29,7 +29,10 @@ function App() {
     localStorage.removeItem("data");
     setData([]);
 
-    setToast("delete");
+    setToast({
+      id: Math.random(),
+      message: "delete",
+    });
     setIsVisible(true);
   };
 

@@ -22,7 +22,10 @@ export default function Lists({ data, setData, setToast, setIsVisible }) {
     setData(newData); // 내용물을 new~로 변경
     localStorage.setItem("data", JSON.stringify(newData));
 
-    setToast("delete");
+    setToast({
+      id: Math.random(),
+      message: "delete",
+    });
     setIsVisible(true);
   };
 

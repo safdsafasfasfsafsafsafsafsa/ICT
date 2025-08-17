@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 export default function Toast({ toast, isVisible, setIsVisible }) {
-  //   toast 변경 시 시간 초기화되도록
+  // toast 변경 시 시간 초기화되도록
   useEffect(() => {
     if (toast) {
       setIsVisible(true);
@@ -18,13 +18,13 @@ export default function Toast({ toast, isVisible, setIsVisible }) {
 
   return (
     <>
-      {isVisible && toast === "create" && (
+      {isVisible && toast.message === "create" && (
         <div className="toast">아이템이 생성되었습니다.</div>
       )}
-      {isVisible && toast === "update" && (
+      {isVisible && toast.message === "update" && (
         <div className="toast">아이템이 수정되었습니다.</div>
       )}
-      {isVisible && toast === "delete" && (
+      {isVisible && toast.message === "delete" && (
         <div className="toast delete">아이템이 삭제되었습니다.</div>
       )}
     </>

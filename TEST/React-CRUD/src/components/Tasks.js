@@ -44,7 +44,10 @@ export default function Tasks({ data, setData, setToast, setIsVisible }) {
     setTextTodo([""]);
     setTextSpending([""]);
 
-    setToast("create");
+    setToast({
+      id: Math.random(),
+      message: "create",
+    });
     setIsVisible(true);
   };
 
@@ -73,7 +76,10 @@ export default function Tasks({ data, setData, setToast, setIsVisible }) {
       localStorage.setItem("data", JSON.stringify(newData));
       setIsEditing(false);
 
-      setToast("update");
+      setToast({
+        id: Math.random(),
+        message: "update",
+      });
       setIsVisible(true);
     }
   };
