@@ -3,7 +3,7 @@ import { EditContext } from "../contexts/EditContext";
 import { IdContext } from "../contexts/IdContext";
 import List from "./List";
 
-export default function Lists(data, setData, setToast, setIsVisible) {
+export default function Lists({ data, setData, setToast, setIsVisible }) {
   const { targetId } = useContext(IdContext);
   const { setTargetId } = useContext(IdContext);
 
@@ -30,16 +30,17 @@ export default function Lists(data, setData, setToast, setIsVisible) {
 
   return (
     <div className="lists">
-      {data.map((data__personal) => (
-        <List
-          key={data__personal.id}
-          id={data__personal.id}
-          todo={data__personal.todo}
-          spending={data__personal.spending}
-          handleClickUpdate={() => handleClickUpdate(data__personal.id)}
-          handleClickDelete={() => handleClickDelete(data__personal.id)}
-        />
-      ))}
+      {data &&
+        data.map((data__personal) => (
+          <List
+            key={data__personal.id}
+            id={data__personal.id}
+            todo={data__personal.todo}
+            spending={data__personal.spending}
+            handleClickUpdate={() => handleClickUpdate(data__personal.id)}
+            handleClickDelete={() => handleClickDelete(data__personal.id)}
+          />
+        ))}
     </div>
   );
 }

@@ -93,20 +93,18 @@ function App() {
         <Tasks
           data={data}
           setData={setData}
-          toast={toast}
           setToast={setToast}
-          isVisible={isVisible}
           setIsVisible={setIsVisible}
         />
         <div className="margin-only"></div>
         {/* 목록: json 읽어 map으로 복제 */}
-        {/* <Lists
+        <Lists
           data={data}
           setData={setData}
           setToast={setToast}
           setIsVisible={setIsVisible}
-        /> */}
-        <div className="lists">
+        />
+        {/* <div className="lists">
           {initData.map((data) => (
             <div key={data.id} className="list">
               <p className="list__todo">{data.todo}</p>
@@ -125,7 +123,7 @@ function App() {
               </button>
             </div>
           ))}
-        </div>
+        </div> */}
         <button className="delete-btn" onClick={handleClickDeleteAll}>
           목록 지우기
         </button>

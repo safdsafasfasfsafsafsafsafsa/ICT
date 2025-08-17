@@ -3,16 +3,15 @@ import { EditContext } from "../contexts/EditContext";
 import { IdContext } from "../contexts/IdContext";
 import Task from "./Task";
 
-export default function Tasks({
-  data,
-  setData,
-  toast,
-  setToast,
-  isVisible,
-  setIsVisible,
-}) {
+export default function Tasks({ data, setData, setToast, setIsVisible }) {
   const { targetId } = useContext(IdContext);
   const { setTargetId } = useContext(IdContext);
+
+  // 입력
+  const initTextTodo = "";
+  const initTextSpending = "";
+  const [textTodo, setTextTodo] = useState(initTextTodo);
+  const [textSpending, setTextSpending] = useState(initTextSpending);
 
   // 수정 상태 체크
   const { isEditing } = useContext(EditContext);
@@ -21,16 +20,11 @@ export default function Tasks({
   const [editedTodo, setEditedTodo] = useState("");
   const [editedSpending, setEditedSpending] = useState("");
 
-  // 입력
-  const initTextTodo = "";
-  const initTextSpending = "";
-  const [textTodo, setTextTodo] = useState(initTextTodo);
-  const [textSpending, setTextSpending] = useState(initTextSpending);
-
   // -------------------------
   useEffect(() => {
     if (targetId) {
       const foundItem = data.find((item) => item.id === targetId);
+      console.log(targetId);
       setEditedTodo(foundItem.todo);
       setEditedSpending(foundItem.spending);
     }
@@ -68,20 +62,30 @@ export default function Tasks({
   const handleSubmitUpdate = (e) => {
     e.preventDefault();
 
-    const newData = data.map((data) => {
-      if (data.id === targetId) {
-        data.todo = editedTodo;
-        data.spending = editedSpending;
-      }
-      return data;
-    });
+    if (data) {
+      const newData = data.map((data) => {
+        if (data.id === targetId) {
+          data.todo = editedTodo;
+          data.spending = editedSpending;
+        }
+        return data;
+      });
 
-    setData(newData);
-    localStorage.setItem("data", JSON.stringify(newData));
-    setIsEditing(false);
+      setData(newData);
+      localStorage.setItem("data", JSON.stringify(newData));
+      setIsEditing(false);
 
-    setToast("update");
-    setIsVisible(true);
+      setToast("update");
+      setIsVisible(true);
+    }
+  };
+
+  const handleChangeEditedTodo = (e) => {
+    setEditedTodo(e.target.value);
+  };
+
+  const handleChangeEditedSpending = (e) => {
+    setEditedSpending(e.target.value);
   };
 
   return (
@@ -94,14 +98,14 @@ export default function Tasks({
               type="text"
               name="todo"
               value={editedTodo}
-              onChange={handleChangeTodo}
+              onChange={handleChangeEditedTodo}
             />
             <Task
               text="비용"
               type="number"
               name="spending"
               value={editedSpending}
-              onChange={handleChangeSpending}
+              onChange={handleChangeEditedSpending}
             />
           </div>
           <button className="write-btn" type="submit">
