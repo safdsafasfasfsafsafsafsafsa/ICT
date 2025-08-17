@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 export default function Toast({ toast, isVisible, setIsVisible }) {
-  // toast 변경 시 시간 초기화되도록
+  // toast 변경 시 시간 초기화되도록, 랜덤 id 추가해 동일 명령에 초기화 작동
   useEffect(() => {
     if (toast) {
       setIsVisible(true);
