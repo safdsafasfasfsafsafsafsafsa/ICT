@@ -1,14 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("renders learn react link", () => {
+test("the counter starts at 0", () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-
-  const lintTest = screen.getByRole("button", {
-    name: "lintTest",
-  });
-  // expect(lintTest.textContent).toBe("lintTest");
-  expect(lintTest).toBeInTheDocument("lintTest");
+  const counterElement = screen.getByTestId("counter");
+  expect(counterElement).toHaveTextContent(0);
 });
